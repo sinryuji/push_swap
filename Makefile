@@ -6,13 +6,13 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/21 18:10:52 by hyeongki          #+#    #+#              #
-#    Updated: 2022/07/21 18:26:10 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/07/21 20:36:35 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFALGS = -Wall -Wextra -Werror
-SRCS_PATH = ./srcs/
+SRCS_PATH = ./source/
 SRCS_NAME = 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJS = $(SRCS:.c=.o)
@@ -23,7 +23,7 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 RM = rm -rf
 AR = ar rcs
 NAME = push_swap
-FT_PRINTF_PATH = ./ft_printf
+FT_PRINTF_PATH = ./lib/ft_printf/
 FT_PRINTF = libftprintf.a
 
 ifdef BONUS_FLAG
