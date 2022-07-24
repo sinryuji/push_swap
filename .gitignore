@@ -9,6 +9,7 @@
 # Executables
 *.exe
 *.out
+push_swap
 
 # LLDB
 *.dSYM

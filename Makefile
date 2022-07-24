@@ -6,14 +6,14 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/21 18:10:52 by hyeongki          #+#    #+#              #
-#    Updated: 2022/07/21 20:36:35 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/07/24 20:44:38 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFALGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 SRCS_PATH = ./source/
-SRCS_NAME = 
+SRCS_NAME = push_swap.c data_validation.c
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJS = $(SRCS:.c=.o)
 BONUS_PATH = 
@@ -35,15 +35,19 @@ endif
 
 all : $(NAME)
 
-$(NAME) : 
+$(NAME) :  $(OBJS)
+	make -C $(FT_PRINTF_PATH)
+	$(CC) $(CFLAGS) $^ $(FT_PRINTF_PATH)$(FT_PRINTF) -o $@
 
 bonus :
 	$(MAKE) BONUS_FLAG=1 all
 
-clean : 
+clean :
+	$(RM) $(OBJS) 
 	make -C $(FT_PRINTF_PATH) clean
 
 fclean : clean
+	$(RM) $(NAME)
 	make -C $(FT_PRINTF_PATH) fclean
 
 re : fclean all
