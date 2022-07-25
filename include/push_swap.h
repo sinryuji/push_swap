@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/25 18:47:20 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:31:26 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_stack
 {
-	int				data;;
+	int				data;
 	struct s_stack	*next;
 }	t_stack;
 

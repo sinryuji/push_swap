@@ -6,12 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:50:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/25 19:42:45 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:31:12 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../include/colors.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 #include <limits.h>
 
@@ -31,17 +30,20 @@ void	integer_validation(int argc, char **argv)
 		if (n < 0)
 			j++;
 		while (str[j])
-			if (!ft_isdigit(str[j++]))
-				ft_puterr(RED "Invalid number of factors.\n");
+		{
+			if (!(ft_isdigit(str[j]) || str[j] == ' '))
+				ft_puterr("Error\n");
+			j++;
+		}
 		if (n > INT_MAX || n < INT_MIN)
-			ft_puterr(RED "Non-integer value in factors.\n");
+			ft_puterr("Error\n");
 	}
 }
 
 void	duplication_validation(t_stack *top)
 {
-	t_stack *current;
-	t_stack *tmp;
+	t_stack	*current;
+	t_stack	*tmp;
 
 	while (top)
 	{
@@ -50,7 +52,7 @@ void	duplication_validation(t_stack *top)
 		while (tmp)
 		{
 			if (current->data == tmp->data)
-				ft_puterr(RED "Duplicate data found.\n");
+				ft_puterr("Error\n");
 			tmp = tmp->next;
 		}
 		top = top->next;
