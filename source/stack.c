@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/25 20:30:58 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:38:15 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,15 @@ void	print_stack(t_stack *top)
 void	stack_init(t_stack **top, int argc, char **argv)
 {
 	int		i;
-	int		j;
 	char	**str;
 
-	i = 1;
 	while (--argc > 0)
 	{
 		str = ft_split(argv[argc], ' ');
-		j = 0;
-		while (str[j])
-			j++;
-		while (--j >= 0)
-			stack_push(top, ft_atoi(str[j]));
+		i = 0;
+		while (str[i])
+			i++;
+		while (--i >= 0)
+			stack_push(top, ft_atoi(str[i]));
 	}
 }
