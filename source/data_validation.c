@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:50:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/24 22:07:25 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:42:45 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 #include <limits.h>
 
-int	integer_check(int argc, char **argv)
+void	integer_validation(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -32,22 +32,27 @@ int	integer_check(int argc, char **argv)
 			j++;
 		while (str[j])
 			if (!ft_isdigit(str[j++]))
-				return (1);
+				ft_puterr(RED "Invalid number of factors.\n");
 		if (n > INT_MAX || n < INT_MIN)
-			return (2);
+			ft_puterr(RED "Non-integer value in factors.\n");
 	}
-	return (0);
 }
 
-void	data_validation(int argc, char **argv)
+void	duplication_validation(t_stack *top)
 {
-	int	ret;
+	t_stack *current;
+	t_stack *tmp;
 
-	if (argc == 1)
-		ft_puterr(RED "Invalid number of factors.\n");
-	ret = integer_check(argc, argv);
-	if (ret == 1)
-		ft_puterr(RED "Non-integer value in factors.\n");
-	else if (ret == 2)
-		ft_puterr(RED "Value out of integer range");
+	while (top)
+	{
+		current = top;
+		tmp = top->next;
+		while (tmp)
+		{
+			if (current->data == tmp->data)
+				ft_puterr(RED "Duplicate data found.\n");
+			tmp = tmp->next;
+		}
+		top = top->next;
+	}
 }
