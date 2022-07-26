@@ -6,13 +6,29 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 19:48:09 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:21:23 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 #include "../lib/ft_printf/include/ft_printf.h"
+
+static void	print_stack(t_stack *top)
+{
+	t_stack	*tmp;
+
+	if (top)
+	{
+		tmp = top;
+		while (tmp)
+		{
+			ft_printf("%d ", tmp->data);
+			tmp = tmp->next;
+		}
+	}
+	ft_printf("\n");
+}
 
 static void	print_state(t_stack *a, t_stack *b)
 {
@@ -37,7 +53,13 @@ int	main(int argc, char **argv)
 	print_state(a, b);
 	pb(&a, &b);
 	print_state(a, b);
+	pb(&a, &b);
+	print_state(a, b);
+	pb(&a, &b);
+	print_state(a, b);
 	rr(&a, &b);
+	print_state(a, b);
+	rrr(&a, &b);
 	print_state(a, b);
 	return (0);
 }

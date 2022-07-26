@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 16:53:06 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 19:50:15 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/07/26 16:56:45 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/07/26 20:20:45 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 #include "../lib/ft_printf/include/ft_printf.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 
-static void	rotate_stack(t_stack **stack)
+static void	reverse_rotate_stack(t_stack **stack)
 {
 	t_stack	*last;
 
 	if (!*stack)
 		return ;
 	last = get_last_node(*stack);
+	get_last_previous_node(*stack)->next = NULL;
 	last->next = *stack;
-	*stack = (*stack)->next;
-	last->next->next = NULL;
+	*stack = last;
 }
 
-void	ra(t_stack **a)
+void	rra(t_stack **a)
 {
-	rotate_stack(a);
-	ft_printf("ra\n");
+	reverse_rotate_stack(a);
+	ft_printf("rra\n");
 }
 
-void	rb(t_stack **b)
+void	rrb(t_stack **b)
 {
-	rotate_stack(b);
-	ft_printf("rb\n");
+	reverse_rotate_stack(b);
+	ft_printf("rrb\n");
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	rotate_stack(a);
-	rotate_stack(b);
-	ft_printf("rr\n");
+	reverse_rotate_stack(a);
+	reverse_rotate_stack(b);
+	ft_printf("rrr\n");
 }

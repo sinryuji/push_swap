@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 19:39:51 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:13:21 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,11 @@ t_stack	*get_last_node(t_stack *top)
 	return (top);
 }
 
-void	print_stack(t_stack *top)
+t_stack	*get_last_previous_node(t_stack *top)
 {
-	t_stack	*tmp;
-
-	if (top)
-	{
-		tmp = top;
-		while (tmp)
-		{
-			ft_printf("%d ", tmp->data);
-			tmp = tmp->next;
-		}
-	}
-	ft_printf("\n");
+	while (top->next->next)
+		top = top->next;
+	return (top);
 }
 
 void	init_stack(t_stack **top, int argc, char **argv)
