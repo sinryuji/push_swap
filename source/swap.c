@@ -6,24 +6,24 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:42:02 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 19:00:26 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:23:49 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/include/ft_printf.h"
 
-static void	swap_stack(t_stack **stack)
+static void	swap_stack(t_stack **top)
 {
 	int	data;
 	int	data2;
 
-	if (!*stack || !(*stack)->next)
+	if (!*top || !(*top)->next)
 		return ;
-	data = pop(stack);
-	data2 = pop(stack);
-	push(stack, data);
-	push(stack, data2);
+	data = pop(top);
+	data2 = pop(top);
+	push(top, data);
+	push(top, data2);
 }
 
 void	sa(t_stack **a)
