@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 17:22:02 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:30:42 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	main(int argc, char **argv)
 	init_stack(&a, argc, argv);
 	duplication_validation(a);
 	print_state(a, b);
-	pb(&a, &b);
-	print_state(a, b);
-	pa(&a, &b);
+	sa(&a);
 	print_state(a, b);
 	return (0);
 }
