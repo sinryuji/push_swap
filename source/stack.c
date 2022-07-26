@@ -6,13 +6,14 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 17:19:28 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:39:51 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../include/colors.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
+#include "../lib/ft_printf/include/ft_printf.h"
 
 void	push(t_stack **top, int data)
 {
@@ -42,6 +43,13 @@ int	pop(t_stack **top)
 	return (data);
 }
 
+t_stack	*get_last_node(t_stack *top)
+{
+	while (top->next)
+		top = top->next;
+	return (top);
+}
+
 void	print_stack(t_stack *top)
 {
 	t_stack	*tmp;
@@ -56,14 +64,6 @@ void	print_stack(t_stack *top)
 		}
 	}
 	ft_printf("\n");
-}
-
-void	print_state(t_stack *a, t_stack *b)
-{
-	ft_printf("a : ");
-	print_stack(a);
-	ft_printf("b : ");
-	print_stack(b);
 }
 
 void	init_stack(t_stack **top, int argc, char **argv)
