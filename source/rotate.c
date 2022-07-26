@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:53:06 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 19:41:33 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:47:21 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,11 @@ void	rb(t_stack **b)
 {
 	rotate_stack(b);
 	ft_printf("rb\n");
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	rotate_stack(a);
+	rotate_stack(b);
+	ft_printf("rr\n");
 }
