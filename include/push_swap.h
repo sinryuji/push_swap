@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 18:20:27 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:31:13 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	pb(t_stack **a, t_stack **b);
 /* swap.c */
 void	sa(t_stack **a);
 void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
 
 #endif
