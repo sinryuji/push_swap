@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 17:10:23 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/07/26 16:52:44 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/07/26 17:10:35 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/lib/libft/include/libft.h"
 
-int	main(int argc, char **argv)
+void	pb(t_stack **a, t_stack **b)
 {
-	t_stack	*a;
-	t_stack *b;
+	int	data;
 
-	a = NULL;
-	b = NULL;
-	integer_validation(argc, argv);
-	init_stack(&a, argc, argv);
-	duplication_validation(a);
-	ft_printf("a : ");
-	print_stack(a);
-	ft_printf("b : ");
-	print_stack(b);
-	pb(&a, &b);
-	ft_printf("a : ");
-	print_stack(a);
-	ft_printf("b : ");
-	print_stack(b);
-	return (0);
+	data = pop(a);
+	push(b, data);
+	ft_printf("pb\n");
 }
