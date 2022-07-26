@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 16:52:44 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 18:27:04 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/07/26 16:42:02 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/07/26 18:29:50 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	pa(t_stack **a, t_stack **b)
+void	sa(t_stack **a)
 {
 	int	data;
+	int	data2;
 
-	ft_printf("pa\n");
-	if (!*b)
-		return ;
-	data = pop(b);
-	push(a, data);
-}
-
-void	pb(t_stack **a, t_stack **b)
-{
-	int	data;
-
-	ft_printf("pb\n");
+	ft_printf("sa\n");
 	if (!*a)
 		return ;
 	data = pop(a);
-	push(b, data);
+	data2 = pop(a);
+	push(a, data);		
+	push(a, data2);		
+}
+
+void	sb(t_stack **b)
+{
+	int	data;
+	int	data2;
+
+	ft_printf("sb\n");
+	if (!*b)
+		return ;
+	data = pop(b);
+	data2 = pop(b);
+	push(b, data);		
+	push(b, data2);		
 }
