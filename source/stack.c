@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/25 20:38:15 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:01:46 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../include/colors.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 
-void	stack_push(t_stack **top, int data)
+void	push(t_stack **top, int data)
 {
 	t_stack	*new;
 
@@ -26,7 +26,7 @@ void	stack_push(t_stack **top, int data)
 	*top = new;
 }
 
-int	stack_pop(t_stack **top)
+int	pop(t_stack **top)
 {
 	t_stack	*tmp;
 	int		data;
@@ -59,7 +59,7 @@ void	print_stack(t_stack *top)
 	}
 }
 
-void	stack_init(t_stack **top, int argc, char **argv)
+void	init_stack(t_stack **top, int argc, char **argv)
 {
 	int		i;
 	char	**str;
@@ -71,6 +71,6 @@ void	stack_init(t_stack **top, int argc, char **argv)
 		while (str[i])
 			i++;
 		while (--i >= 0)
-			stack_push(top, ft_atoi(str[i]));
+			push(top, ft_atoi(str[i]));
 	}
 }

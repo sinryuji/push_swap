@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/25 20:32:08 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:02:25 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*top;
-	char	**data;
+	t_stack	*a;
+	t_stack *b;
 
-	top = NULL;
+	a = NULL;
+	b = NULL;
 	integer_validation(argc, argv);
-	stack_init(&top, argc, argv);
-	duplication_validation(top);
-	print_stack(top);
+	init_stack(&a, argc, argv);
+	duplication_validation(a);
+	print_stack(a);
 	return (0);
 }
