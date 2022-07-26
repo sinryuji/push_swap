@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 17:05:36 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:17:19 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	init_stack(t_stack **top, int argc, char **argv);
 void	push(t_stack **top, int data);
 int		pop(t_stack **top);
 void	print_stack(t_stack *top);
+void	print_state(t_stack *a, t_stack *b);
 
 /* push.c */
+void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
 
 #endif
