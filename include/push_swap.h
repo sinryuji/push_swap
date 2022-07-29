@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 20:21:45 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:45:06 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_stack
 {
 	int				data;
+	struct s_stack 	*previous;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -27,8 +28,8 @@ void	duplication_validation(t_stack *top);
 void	init_stack(t_stack **top, int argc, char **argv);
 void	push(t_stack **top, int data);
 int		pop(t_stack **top);
-t_stack	*get_last_node(t_stack *top);
-t_stack	*get_last_previous_node(t_stack *top);
+void	print_stack(t_stack *top);
+void	print_state(t_stack *a, t_stack *b);
 
 /* push.c */
 void	pa(t_stack **a, t_stack **b);
@@ -48,4 +49,12 @@ void	rr(t_stack **a, t_stack **b);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
+
+/* linked_list.c */
+t_stack	*get_last_node(t_stack *top);
+t_stack	*get_last_previous_node(t_stack *top);
+int		get_list_length(t_stack *top);
+
+/* solve.c */
+
 #endif

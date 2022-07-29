@@ -19,3 +19,6 @@ push_swap
 
 # Swap
 *.swp
+
+# Tester
+push_swap_tester/

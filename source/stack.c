@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 20:13:21 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:05:56 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	push(t_stack **top, int data)
 		ft_puterr(RED "Malloc error!\n");
 	new->data = data;
 	new->next = *top;
+	new->previous = NULL;
+	if (*top)
+		(*top)->previous = new;
 	*top = new;
 }
 
@@ -37,24 +40,35 @@ int	pop(t_stack **top)
 		tmp = *top;
 		data = tmp->data;
 		*top = tmp->next;
+		(*top)->previous = NULL;
 		free(tmp);
 		tmp = NULL;
 	}
 	return (data);
 }
 
-t_stack	*get_last_node(t_stack *top)
+void	print_stack(t_stack *top)
 {
-	while (top->next)
-		top = top->next;
-	return (top);
+	t_stack	*tmp;
+
+	if (top)
+	{
+		tmp = top;
+		while (tmp)
+		{
+			ft_printf("%d ", tmp->data);
+			tmp = tmp->next;
+		}
+	}
+	ft_printf("\n");
 }
 
-t_stack	*get_last_previous_node(t_stack *top)
+void	print_state(t_stack *a, t_stack *b)
 {
-	while (top->next->next)
-		top = top->next;
-	return (top);
+	ft_printf("a : ");
+	print_stack(a);
+	ft_printf("b : ");
+	print_stack(b);
 }
 
 void	init_stack(t_stack **top, int argc, char **argv)

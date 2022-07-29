@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/26 20:21:23 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:20:47 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,9 @@
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 #include "../lib/ft_printf/include/ft_printf.h"
 
-static void	print_stack(t_stack *top)
+static void	push_swap(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
 
-	if (top)
-	{
-		tmp = top;
-		while (tmp)
-		{
-			ft_printf("%d ", tmp->data);
-			tmp = tmp->next;
-		}
-	}
-	ft_printf("\n");
-}
-
-static void	print_state(t_stack *a, t_stack *b)
-{
-	ft_printf("a : ");
-	print_stack(a);
-	ft_printf("b : ");
-	print_stack(b);
 }
 
 int	main(int argc, char **argv)
@@ -49,17 +30,17 @@ int	main(int argc, char **argv)
 	init_stack(&a, argc, argv);
 	duplication_validation(a);
 	print_state(a, b);
-	pb(&a, &b);
+	push(&a, 6);
 	print_state(a, b);
-	pb(&a, &b);
+	push(&a, 7);
 	print_state(a, b);
-	pb(&a, &b);
+	ra(&a);
 	print_state(a, b);
-	pb(&a, &b);
+	ra(&a);
 	print_state(a, b);
-	rr(&a, &b);
+	rra(&a);
 	print_state(a, b);
-	rrr(&a, &b);
+	rra(&a);
 	print_state(a, b);
 	return (0);
 }

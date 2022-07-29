@@ -6,14 +6,15 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/21 18:10:52 by hyeongki          #+#    #+#              #
-#    Updated: 2022/07/26 19:49:27 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/07/29 17:41:10 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRCS_PATH = ./source/
-SRCS_NAME = push_swap.c data_validation.c stack.c push.c swap.c rotate.c reverse_rotate.c
+SRCS_NAME = push_swap.c data_validation.c stack.c push.c swap.c rotate.c reverse_rotate.c solve.c \
+			linked_list.c
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJS = $(SRCS:.c=.o)
 BONUS_PATH = 
