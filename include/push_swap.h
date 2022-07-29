@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/29 18:57:27 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/29 19:56:00 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,5 @@ t_stack	*get_index_node(t_stack *top, int i);
 /* quick_sort.c */
 void	quick_sort(t_stack **a, t_stack **b, int left, int right);
 int		partition(t_stack **a, t_stack **b, int left, int right);
-
-/* solve.c */
 
 #endif

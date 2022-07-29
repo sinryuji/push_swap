@@ -6,16 +6,19 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:26:57 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/29 19:19:50 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/29 19:52:28 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../lib/ft_printf/lib/libft/include/libft.h"
 
 void	swap(t_stack **a, t_stack **b, int x, int y)
 {
 	int	i;
 
+	if (x == y)
+		return ;
 	i = 0;
 	while (x - i++)
 		pb(a, b);
@@ -33,7 +36,6 @@ void	swap(t_stack **a, t_stack **b, int x, int y)
 	i = 0;
 	while (x - i++)
 		pa(a, b);
-	print_state(*a, *b);
 }
 
 int	partition(t_stack **a, t_stack **b, int left, int right)
