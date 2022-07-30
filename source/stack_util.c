@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/30 19:30:12 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/07/30 18:00:53 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/07/30 19:03:43 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/lib/libft/include/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
-int	main(int argc, char **argv)
+int	check_sort(t_stack *top)
 {
-	t_stack	*a;
-	t_stack	*b;
+	while (top->next)
+	{
+		if (top->data > top->next->data)
+			return (0);
+		top = top->next;
+	}	
+	return (1);
+}
 
-	a = NULL;
-	b = NULL;
-	integer_validation(argc, argv);
-	init_stack(&a, argc, argv);
-	duplication_validation(a);
-//	quick_sort(&a, &b, 0, get_list_length(a) - 1);
-	selection_sort(&a, &b);
-	return (0);
+t_stack	*get_min_node(t_stack *top)
+{
+	t_stack	*min;
+
+	min = top;
+	while (top)
+	{
+		if (min->data > top->data)
+			min = top;	
+		top = top->next;
+	}
+
+	return (min);
 }

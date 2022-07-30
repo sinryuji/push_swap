@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:34:44 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/29 19:55:52 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:10:04 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,18 @@ t_stack	*get_index_node(t_stack *top, int i)
 		top = top->next;
 
 	return (top);
+}
+
+int	get_node_index(t_stack *current, t_stack *top)
+{
+	int	i;
+
+	i = 0;
+	while (top != current)
+	{
+		top = top->next;
+		i++;
+	}
+
+	return (i);
 }

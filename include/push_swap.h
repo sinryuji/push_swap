@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/29 19:56:00 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:27:08 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,19 @@ void	rrr(t_stack **a, t_stack **b);
 t_stack	*get_last_node(t_stack *top);
 int		get_list_length(t_stack *top);
 t_stack	*get_index_node(t_stack *top, int i);
+int	get_node_index(t_stack *current, t_stack *top);
 
 /* quick_sort.c */
 void	quick_sort(t_stack **a, t_stack **b, int left, int right);
 int		partition(t_stack **a, t_stack **b, int left, int right);
+
+/* stack_util.c */
+int	check_sort(t_stack *top);
+t_stack	*get_min_node(t_stack *top);
+
+/* selection_sort.c */
+void	min_move_b(t_stack **a, t_stack **b);
+void	selection_sort(t_stack **a, t_stack **b);
+
 
 #endif
