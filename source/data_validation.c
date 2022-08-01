@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:50:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/30 16:48:46 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/01 14:57:58 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,6 @@ void	integer_validation(int argc, char **argv)
 				ft_puterr("Error\n");
 			j++;
 		}
-//		str = argv[i++];
-//		n = ft_atol(str);
-//		if (n < 0)
-//			j++;
-//		while (str[j])
-//		{
-//			if (!(ft_isdigit(str[j]) || str[j] == ' '))
-//				ft_puterr("Error\n");
-//			j++;
-//		}
-//		if (n > INT_MAX || n < INT_MIN)
-//			ft_puterr("Error\n");
 	}
 }
 
