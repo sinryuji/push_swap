@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:50:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/01 15:23:22 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/01 15:31:53 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	integer_validation(int argc, char **argv)
 	{
 		j = 0;
 		split = ft_split(argv[i++], ' ');
+		if (!split[0])
+			ft_puterr("Error\n");
 		while (split[j])
 		{
 			str = split[j];
