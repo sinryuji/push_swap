@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/29 19:18:50 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/01 15:23:50 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,6 @@ void	init_stack(t_stack **top, int argc, char **argv)
 		while (--i >= 0)
 			push(top, ft_atoi(str[i]));
 	}
+	if (get_list_length(*top) == 0)
+		exit(0);
 }
