@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/30 19:27:08 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:14:52 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,14 @@ int		partition(t_stack **a, t_stack **b, int left, int right);
 
 /* stack_util.c */
 int	check_sort(t_stack *top);
+int	check_decending_sort(t_stack *top);
 t_stack	*get_min_node(t_stack *top);
+t_stack	*get_max_node(t_stack *top);
 
 /* selection_sort.c */
-void	min_move_b(t_stack **a, t_stack **b);
 void	selection_sort(t_stack **a, t_stack **b);
+void	move_b(t_stack **a, t_stack **b, t_stack *node, int index, int *cnt);
+
 
 
 #endif
