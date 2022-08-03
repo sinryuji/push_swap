@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/03 16:45:24 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:27:56 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ typedef struct s_stack
 	struct s_stack 	*prev;
 	struct s_stack	*next;
 }	t_stack;
+
+typedef struct s_pivots
+{
+	int	pivot1;
+	int	pivot2;
+}	t_pivots;
 
 /* data_validation */
 void	integer_validation(int argc, char **argv);
@@ -61,15 +67,15 @@ void	quick_sort(t_stack *top, int left, int right);
 int		partition(t_stack *top, int left, int right);
 
 /* stack_util.c */
-int	check_sort(t_stack *top);
-int	check_decending_sort(t_stack *top);
-t_stack	*get_min_node(t_stack *top);
-t_stack	*get_max_node(t_stack *top);
-int		get_mid_value(t_stack *top);
+int			check_acending_sort(t_stack *top);
+int			check_decending_sort(t_stack *top);
+t_stack		*get_min_node(t_stack *top);
+t_stack		*get_max_node(t_stack *top);
+t_pivots	get_pivots(t_stack *top);
 
 /* selection_sort.c */
 void	selection_sort(t_stack **a, t_stack **b);
-void	move_b(t_stack **a, t_stack **b, t_stack *node, int index, int *cnt);
+int		move_b(t_stack **a, t_stack **b, t_stack *node, int index);
 
 /* stack_util2.c */
 t_stack *stack_copy(t_stack *top);
