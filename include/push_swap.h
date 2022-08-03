@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/02 18:14:52 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:45:24 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct s_stack
 {
 	int				data;
-	struct s_stack 	*previous;
+	struct s_stack 	*prev;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -57,19 +57,22 @@ t_stack	*get_index_node(t_stack *top, int i);
 int	get_node_index(t_stack *current, t_stack *top);
 
 /* quick_sort.c */
-void	quick_sort(t_stack **a, t_stack **b, int left, int right);
-int		partition(t_stack **a, t_stack **b, int left, int right);
+void	quick_sort(t_stack *top, int left, int right);
+int		partition(t_stack *top, int left, int right);
 
 /* stack_util.c */
 int	check_sort(t_stack *top);
 int	check_decending_sort(t_stack *top);
 t_stack	*get_min_node(t_stack *top);
 t_stack	*get_max_node(t_stack *top);
+int		get_mid_value(t_stack *top);
 
 /* selection_sort.c */
 void	selection_sort(t_stack **a, t_stack **b);
 void	move_b(t_stack **a, t_stack **b, t_stack *node, int index, int *cnt);
 
-
+/* stack_util2.c */
+t_stack *stack_copy(t_stack *top);
+void	stack_free(t_stack *top);
 
 #endif

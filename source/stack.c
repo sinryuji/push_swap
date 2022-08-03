@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/01 15:31:07 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:57:57 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@ void	push(t_stack **top, int data)
 	if (!new)
 		ft_puterr(RED "Malloc error!\n");
 	new->data = data;
-	new->next = *top;
-	new->previous = NULL;
 	if (*top)
-		(*top)->previous = new;
+		new->next = *top;
+	else
+		new->next = NULL;
+	new->next = *top;
+	new->prev = NULL;
+	if (*top)
+		(*top)->prev = new;
 	*top = new;
 }
 
@@ -41,7 +45,7 @@ int	pop(t_stack **top)
 		data = tmp->data;
 		*top = tmp->next;
 		if (*top)
-			(*top)->previous = NULL;
+			(*top)->prev = NULL;
 		free(tmp);
 		tmp = NULL;
 	}

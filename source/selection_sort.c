@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:56:42 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/02 18:41:43 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:51:28 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,16 @@ void	move_a(t_stack **a, t_stack **b, t_stack *node, int index)
 	pa(a, b);
 }
 
-void	sort(t_stack **a, t_stack **b)
-{
-
-}
-
 void	selection_sort(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 	int	pivot;
 	int	*cnt;
 
+	if (check_sort(*a))
+		return ;
+	pivot = get_mid_value(*a);
 	tmp = *a;
-	pivot = (*a)->data;
 	while (tmp)
 	{
 		if (tmp->data < pivot)

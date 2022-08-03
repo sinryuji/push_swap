@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_util2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/02 20:06:38 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/08/02 20:10:47 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/08/03 16:46:41 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 #include "../lib/ft_printf/include/ft_printf.h"
 
-int	main(int argc, char **argv)
+t_stack *stack_copy(t_stack *top)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack *ret;
+	t_stack	*last;
 
-	a = NULL;
-	b = NULL;
-	integer_validation(argc, argv);
-	init_stack(&a, argc, argv);
-	duplication_validation(a);
-//	quick_sort(a, 0, get_list_length(a) - 1);
-	selection_sort(&a, &b);
-	return (0);
+	ret = NULL;
+	last = get_last_node(top);
+	while (last)
+	{
+		push(&ret, last->data);
+		last = last->prev;
+	}
+	return (ret);
+}
+
+void	stack_free(t_stack *top)
+{
+	while (top)
+		pop(&top);
 }

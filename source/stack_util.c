@@ -6,11 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:00:53 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/02 18:41:16 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:49:24 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../lib/ft_printf/include/ft_printf.h"
 
 int	check_sort(t_stack *top)
 {
@@ -62,4 +63,18 @@ t_stack	*get_max_node(t_stack *top)
 	}
 
 	return (max);
+}
+
+int	get_mid_value(t_stack *top)
+{
+	t_stack *tmp;
+	int		ret;
+	int		len;
+
+	tmp = stack_copy(top);
+	len = get_list_length(tmp);
+	quick_sort(tmp, 0, len - 1);
+	ret = get_index_node(tmp, len / 2)->data;
+	
+	return (ret);
 }
