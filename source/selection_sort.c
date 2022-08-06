@@ -6,12 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:56:42 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/03 18:55:51 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/06 20:05:39 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/include/ft_printf.h"
+#include "../lib/ft_printf/lib/libft/include/libft.h"
 
 int	move_b(t_stack **a, t_stack **b, t_stack *node, int index)
 {
@@ -58,7 +59,8 @@ void	sort_acending(t_stack **a, t_stack **b)
 
 void	sort_decending(t_stack **a, t_stack **b)
 {
-	int	cnt;
+	int		cnt;
+	t_pivots ps;
 
 	cnt = 0;
 	while (!check_decending_sort(*b))
