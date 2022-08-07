@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 20:10:47 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/06 16:45:09 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:55:38 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,6 @@ t_stack *stack_copy(t_stack *top)
 	ret = NULL;
 	last = get_last_node(top);
 	while (last)
-	{
-		push(&ret, last->data);
-		last = last->prev;
-	}
-	return (ret);
-}
-
-t_stack *stack_copy_range(t_stack *top, int r)
-{
-	t_stack *ret;
-	t_stack	*last;
-
-	ret = NULL;
-	last = get_last_node(top);
-	while (last && r--)
 	{
 		push(&ret, last->data);
 		last = last->prev;
