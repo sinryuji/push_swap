@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/07 19:21:41 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/07 19:29:28 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int			check_decending_sort(t_stack *top);
 t_stack		*get_min_node(t_stack *top);
 t_stack		*get_max_node(t_stack *top);
 t_pivots	get_pivots(t_stack *top);
+t_pivots	get_pivots_range(t_stack *top, int r);
 
 /* selection_sort.c */
 void	selection_sort(t_stack **a, t_stack **b);
@@ -80,5 +81,9 @@ int		move_b(t_stack **a, t_stack **b, t_stack *node, int index);
 /* stack_util2.c */
 t_stack *stack_copy(t_stack *top);
 void	stack_free(t_stack *top);
+
+/* quick_sort_apply.c */
+void	a_to_b(t_stack **a, t_stack **b, int r);
+void	b_to_a(t_stack **a, t_stack **b, int r);
 
 #endif
