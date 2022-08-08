@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 22:13:00 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/08/08 21:12:18 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/08/08 22:12:52 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 #include "../lib/ft_printf/include/ft_printf.h"
 
-int	main(int argc, char **argv)
+void	indexing(t_stack **a)
 {
-	t_stack	*a;
-	t_stack	*b;
+	int	i;
+	t_stack *tmp;
+	t_stack *ret;
+	t_stack *tmp2;
 
-	a = NULL;
-	b = NULL;
-	integer_validation(argc, argv);
-	init_stack(&a, argc, argv);
-//	duplication_validation(a);
-//	quick_sort(a, 0, get_list_length(a) - 1);
-//	selection_sort(&a, &b);
-//	a_to_b(&a, &b, get_list_length(a));
-//	print_state(a, b);
-	print_state(a, b);
-	indexing(&a);
-	print_state(a, b);
-	return (0);
+	i = 0;
+	tmp = stack_copy(*a);
+	ret = NULL;
+	quick_sort(tmp, 0, get_list_length(tmp) - 1);
+	tmp2 = get_last_node(*a);
+	while (tmp2)
+	{
+		push(&ret, get_value_index(tmp2->data, tmp));
+		tmp2 = tmp2->prev;
+	}
+	stack_free(a);
+	*a = ret;
+	stack_free(&tmp);
 }

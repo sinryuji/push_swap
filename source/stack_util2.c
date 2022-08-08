@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 20:10:47 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/07 18:58:50 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/08 21:45:17 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,15 @@ t_stack *stack_copy(t_stack *top)
 	return (ret);
 }
 
-void	stack_free(t_stack *top)
+void	stack_free(t_stack **top)
 {
-	while (top)
-		pop(&top);
+	t_stack *tmp;
+
+	while (*top)
+	{
+		tmp = *top;
+		*top = tmp->next;
+		free(tmp);
+		tmp = NULL;
+	}
 }

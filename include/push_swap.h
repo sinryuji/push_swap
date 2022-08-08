@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 19:17:00 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/08 21:41:14 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_stack	*get_last_node(t_stack *top);
 int		get_list_length(t_stack *top);
 t_stack	*get_index_node(t_stack *top, int i);
 int	get_node_index(t_stack *current, t_stack *top);
+int	get_value_index(int data, t_stack *top);
 
 /* quick_sort.c */
 void	quick_sort(t_stack *top, int left, int right);
@@ -80,7 +81,7 @@ int		move_b(t_stack **a, t_stack **b, t_stack *node, int index);
 
 /* stack_util2.c */
 t_stack *stack_copy(t_stack *top);
-void	stack_free(t_stack *top);
+void	stack_free(t_stack **top);
 
 /* quick_sort_apply.c */
 void	a_to_b(t_stack **a, t_stack **b, int r);
@@ -101,5 +102,8 @@ void	escape_b_021(t_stack **a, t_stack **b);
 void	escape_b_102(t_stack **a, t_stack **b);
 void	escape_b_120(t_stack **a, t_stack **b);
 void	escape_b_201(t_stack **a, t_stack **b);
+
+/* indexing.c */
+void	indexing(t_stack **a);
 
 #endif

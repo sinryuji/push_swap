@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:00:53 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 19:57:43 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/08 21:41:36 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_pivots	get_pivots_range(t_stack *top, int r)
 	quick_sort(tmp, 0, len - 1);
 	ps.pivot1 = get_index_node(tmp, (r / 2) - 1)->data;
 //	ps.pivot2 = get_index_node(tmp, (len / 3) * 2)->data;
-	free(tmp);
+	stack_free(&tmp);
 	
 	return (ps);
 }

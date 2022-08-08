@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:50:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/01 15:31:53 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/08 21:58:19 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	integer_validation(int argc, char **argv)
 				ft_puterr("Error\n");
 			j++;
 		}
+		ft_split_free(split);
 	}
 }
 
