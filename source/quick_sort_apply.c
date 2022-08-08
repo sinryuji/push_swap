@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:55:13 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/07 19:31:28 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:58:00 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	a_to_b(t_stack **a, t_stack **b, int r)
 	int	pb_cnt;
 	int	i;
 
-	if (r <= 1)
+	if (escape_a_to_b(a, r))
 		return ;
-	pivot = get_pivots(*a).pivot1;
+//	pivot = get_pivots(*a).pivot1;
 	pivot = get_pivots_range(*a, r).pivot1;
 	ra_cnt = 0;
 	pb_cnt = 0;
@@ -40,12 +40,12 @@ void	a_to_b(t_stack **a, t_stack **b, int r)
 			pb_cnt++;
 		}
 	}
-//	if (get_list_length(*a) != ra_cnt)
-//	{
+	if (get_list_length(*a) != ra_cnt)
+	{
 		while (i++ < ra_cnt)
 			rra(a);
-//	}
-	print_state(*a, *b);
+	}
+//	print_state(*a, *b);
 	a_to_b(a, b, ra_cnt);
 	b_to_a(a, b, pb_cnt);
 }
@@ -57,9 +57,9 @@ void	b_to_a(t_stack **a, t_stack **b, int r)
 	int	pa_cnt;
 	int	i;
 
-	if (r <= 1)
+	if (escape_b_to_a(a, b, r))
 		return ;
-	pivot = get_pivots(*b).pivot1;
+//	pivot = get_pivots(*b).pivot1;
 	pivot = get_pivots_range(*b, r).pivot1;
 	rb_cnt = 0;
 	pa_cnt = 0;
@@ -77,12 +77,12 @@ void	b_to_a(t_stack **a, t_stack **b, int r)
 			rb_cnt++;
 		}
 	}
-//	if (get_list_length(*b) != rb_cnt)
-//	{
+	if (get_list_length(*b) != rb_cnt)
+	{
 		while(i++ < rb_cnt)
 			rrb(b);
-//	}
-	print_state(*a, *b);
+	}
+//	print_state(*a, *b);
 	a_to_b(a, b, pa_cnt);
 	b_to_a(a, b, rb_cnt);
 }

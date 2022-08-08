@@ -1,32 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   escape_range3_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 19:42:48 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/08/08 17:41:02 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/08/08 18:38:56 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/lib/libft/include/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
-int	main(int argc, char **argv)
+void	escape_a_201(t_stack **a)
 {
-	t_stack	*a;
-	t_stack	*b;
+	if (get_list_length(*a) == 3)
+		ra(a);
+	else
+	{
+		sa(a);
+		ra(a);
+		sa(a);
+		rra(a);
+	}
+}
 
-	a = NULL;
-	b = NULL;
-	integer_validation(argc, argv);
-	init_stack(&a, argc, argv);
-	duplication_validation(a);
-//	quick_sort(a, 0, get_list_length(a) - 1);
-//	selection_sort(&a, &b);
-	a_to_b(&a, &b, get_list_length(a));
-//	print_state(a, b);
-	return (0);
+void	escape_a_120(t_stack **a)
+{
+	if (get_list_length(*a) == 3)
+		rra(a);
+	else
+	{
+		ra(a);
+		sa(a);
+		rra(a);
+		sa(a);
+	}
+}
+
+void	escape_a_210(t_stack **a)
+{
+	if (get_list_length(*a) == 3)
+	{
+		sa(a);
+		rra(a);
+	}
+	else
+	{
+		sa(a);
+		ra(a);
+		sa(a);
+		rra(a);
+		sa(a);
+	}
 }

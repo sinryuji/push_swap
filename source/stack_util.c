@@ -6,13 +6,15 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:00:53 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/07 19:35:05 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:57:43 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/include/ft_printf.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
+#include <time.h>
+#include <stdio.h>
 
 int	check_acending_sort(t_stack *top)
 {
@@ -76,7 +78,7 @@ t_pivots	get_pivots(t_stack *top)
 	tmp = stack_copy(top);
 	len = get_list_length(tmp);
 	quick_sort(tmp, 0, len - 1);
-	ps.pivot1 = get_index_node(tmp, (len / 3))->data;
+	ps.pivot1 = get_index_node(tmp, (len / 2))->data;
 	ps.pivot2 = get_index_node(tmp, (len / 3) * 2)->data;
 	free(tmp);
 	
@@ -94,7 +96,7 @@ t_pivots	get_pivots_range(t_stack *top, int r)
 	len = get_list_length(tmp);
 	quick_sort(tmp, 0, len - 1);
 	ps.pivot1 = get_index_node(tmp, (r / 2) - 1)->data;
-	ps.pivot2 = get_index_node(tmp, (len / 3) * 2)->data;
+//	ps.pivot2 = get_index_node(tmp, (len / 3) * 2)->data;
 	free(tmp);
 	
 	return (ps);

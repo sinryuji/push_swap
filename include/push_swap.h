@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/07 19:29:28 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:17:00 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,21 @@ void	stack_free(t_stack *top);
 /* quick_sort_apply.c */
 void	a_to_b(t_stack **a, t_stack **b, int r);
 void	b_to_a(t_stack **a, t_stack **b, int r);
+
+/* escape_range3.c */
+int	escape_a_to_b(t_stack **a, int r);
+int	escape_b_to_a(t_stack **a, t_stack **b, int r);
+
+/* escape_range3_a.c */
+void	escape_a_201(t_stack **a);
+void	escape_a_120(t_stack **a);
+void	escape_a_210(t_stack **a);
+
+/* escape_range3_b.c */
+void	escape_b_012(t_stack **a, t_stack **b);
+void	escape_b_021(t_stack **a, t_stack **b);
+void	escape_b_102(t_stack **a, t_stack **b);
+void	escape_b_120(t_stack **a, t_stack **b);
+void	escape_b_201(t_stack **a, t_stack **b);
 
 #endif
