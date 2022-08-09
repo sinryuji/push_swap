@@ -6,14 +6,14 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:55:13 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 19:58:00 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/09 16:35:16 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/include/ft_printf.h"
 
-void	a_to_b(t_stack **a, t_stack **b, int r)
+void	quick_a_to_b(t_stack **a, t_stack **b, int r)
 {
 	int	pivot;
 	int	ra_cnt;
@@ -46,11 +46,11 @@ void	a_to_b(t_stack **a, t_stack **b, int r)
 			rra(a);
 	}
 //	print_state(*a, *b);
-	a_to_b(a, b, ra_cnt);
-	b_to_a(a, b, pb_cnt);
+	quick_a_to_b(a, b, ra_cnt);
+	quick_b_to_a(a, b, pb_cnt);
 }
 
-void	b_to_a(t_stack **a, t_stack **b, int r)
+void	quick_b_to_a(t_stack **a, t_stack **b, int r)
 {
 	int	pivot;
 	int	rb_cnt;
@@ -83,6 +83,6 @@ void	b_to_a(t_stack **a, t_stack **b, int r)
 			rrb(b);
 	}
 //	print_state(*a, *b);
-	a_to_b(a, b, pa_cnt);
-	b_to_a(a, b, rb_cnt);
+	quick_a_to_b(a, b, pa_cnt);
+	quick_b_to_a(a, b, rb_cnt);
 }

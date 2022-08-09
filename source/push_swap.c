@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 22:13:00 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:53:45 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	main(int argc, char **argv)
 //	selection_sort(&a, &b);
 //	a_to_b(&a, &b, get_list_length(a));
 //	print_state(a, b);
-	print_state(a, b);
 	indexing(&a);
-	print_state(a, b);
+	hourglass_sort(&a, &b);
+//	print_state(a, b);
 	return (0);
 }

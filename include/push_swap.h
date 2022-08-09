@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 21:41:14 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/09 16:37:16 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ t_stack *stack_copy(t_stack *top);
 void	stack_free(t_stack **top);
 
 /* quick_sort_apply.c */
-void	a_to_b(t_stack **a, t_stack **b, int r);
-void	b_to_a(t_stack **a, t_stack **b, int r);
+void	quick_a_to_b(t_stack **a, t_stack **b, int r);
+void	quick_b_to_a(t_stack **a, t_stack **b, int r);
 
 /* escape_range3.c */
 int	escape_a_to_b(t_stack **a, int r);
@@ -105,5 +105,10 @@ void	escape_b_201(t_stack **a, t_stack **b);
 
 /* indexing.c */
 void	indexing(t_stack **a);
+
+/* hourglass_sort.c */
+void	hourglass_sort(t_stack **a, t_stack **b);
+void	hg_a_to_b(t_stack **a, t_stack **b, int chunk);
+void	hg_b_to_a(t_stack **a, t_stack **b);
 
 #endif
