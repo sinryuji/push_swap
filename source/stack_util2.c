@@ -6,13 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 20:10:47 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 21:45:17 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:35:03 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
 t_stack *stack_copy(t_stack *top)
 {

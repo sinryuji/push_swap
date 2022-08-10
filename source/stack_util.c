@@ -6,12 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:00:53 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/08 21:41:36 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:34:59 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 #include <time.h>
 #include <stdio.h>

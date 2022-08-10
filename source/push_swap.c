@@ -6,13 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/09 17:53:45 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:36:25 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
 int	main(int argc, char **argv)
 {
@@ -29,7 +28,8 @@ int	main(int argc, char **argv)
 //	a_to_b(&a, &b, get_list_length(a));
 //	print_state(a, b);
 	indexing(&a);
-	hourglass_sort(&a, &b);
-//	print_state(a, b);
+//	hourglass_sort(&a, &b);
+	merge_sort(&a, &b);
+	print_state(a, b);
 	return (0);
 }

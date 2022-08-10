@@ -6,12 +6,14 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/09 16:37:16 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:02:29 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include "../lib/ft_printf/include/ft_printf.h"
 
 typedef struct s_stack
 {
@@ -38,23 +40,23 @@ void	print_stack(t_stack *top);
 void	print_state(t_stack *a, t_stack *b);
 
 /* push.c */
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
+int	pa(t_stack **a, t_stack **b);
+int	pb(t_stack **a, t_stack **b);
 
 /* swap.c */
-void	sa(t_stack **a);
-void	sb(t_stack **b);
-void	ss(t_stack **a, t_stack **b);
+int	sa(t_stack **a);
+int	sb(t_stack **b);
+int	ss(t_stack **a, t_stack **b);
 
 /* rotate.c */
-void	ra(t_stack **a);
-void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
+int	ra(t_stack **a);
+int	rb(t_stack **b);
+int	rr(t_stack **a, t_stack **b);
 
 /* reverse_rotate.c */
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+int	rra(t_stack **a);
+int	rrb(t_stack **b);
+int	rrr(t_stack **a, t_stack **b);
 
 /* linked_list.c */
 t_stack	*get_last_node(t_stack *top);
@@ -110,5 +112,8 @@ void	indexing(t_stack **a);
 void	hourglass_sort(t_stack **a, t_stack **b);
 void	hg_a_to_b(t_stack **a, t_stack **b, int chunk);
 void	hg_b_to_a(t_stack **a, t_stack **b);
+
+/* merge_sort.c */
+void	merge_sort(t_stack **a, t_stack **b);
 
 #endif

@@ -6,13 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:26:57 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/07 19:00:54 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:34:22 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
 void	swap(t_stack *x, t_stack *y)
 {

@@ -6,41 +6,52 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:42:02 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/07/29 19:35:27 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:06:23 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
-static void	swap_stack(t_stack **top)
+static int	swap_stack(t_stack **top)
 {
 	int	data;
 	int	data2;
 
 	if (!*top || !(*top)->next)
-		return ;
+		return (0);
 	data = pop(top);
 	data2 = pop(top);
 	push(top, data);
 	push(top, data2);
+	return (1);
 }
 
-void	sa(t_stack **a)
+int	sa(t_stack **a)
 {
-	swap_stack(a);
-	ft_printf("sa\n");
+	if (swap_stack(a))
+	{
+		ft_printf("sa\n");
+		return (1);
+	}
+	return (0);
 }
 
-void	sb(t_stack **b)
+int	sb(t_stack **b)
 {
-	swap_stack(b);
-	ft_printf("sb\n");
+	if (swap_stack(b))
+	{
+		ft_printf("sb\n");
+		return (1);
+	}
+	return (0);
 }
 
-void	ss(t_stack **a, t_stack **b)
+int	ss(t_stack **a, t_stack **b)
 {
-	swap_stack(a);
-	swap_stack(b);
-	ft_printf("ss\n");
+	if (swap_stack(a) && swap_stack(b))
+	{
+		ft_printf("ss\n");
+		return (1);
+	}
+	return (0);
 }

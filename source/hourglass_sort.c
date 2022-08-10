@@ -6,12 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:10:43 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/09 17:53:40 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:33:51 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
 void	hourglass_sort(t_stack **a, t_stack **b)
 {

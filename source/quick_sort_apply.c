@@ -6,12 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 17:55:13 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/09 16:35:16 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:34:26 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
 void	quick_a_to_b(t_stack **a, t_stack **b, int r)
 {
