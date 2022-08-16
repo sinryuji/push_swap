@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/15 17:38:04 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:49:41 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,117 +26,131 @@ int	get_depth(t_stack *a, int n)
 	return (depth);
 }
 
-int	ascending_triangle_a(t_stack **a, t_stack **b, int n)
+void	make_triangle_a(t_stack **a, t_stack **b, int (*fp)(t_stack, t_stack, int))
 {
-	int	arr[3];
 
-	arr[0] = (*a)->data;	
-	arr[1] = (*a)->next->data;	
-	arr[2] = (*a)->next->next->data;
-
-	if (arr[0] < arr[2] && arr[2] < arr[1])
-		return (ra(a) && sa(a) && ra(a) && ra(a));
-	if (arr[1] < arr[0] && arr[0] < arr[2])
-		return (sa(a) && ra(a) && ra(a) && ra(a));
-	if (arr[2] < arr[0] && arr[0] < arr[1])
-		return (pb(a, b) && sa(a) && ra(a) && pa(a, b) && ra(a) && ra(a));
-	if (arr[2] < arr[1] && arr[1] < arr[0])
-		return (pb(a, b) && sa(a) && ra(a) && ra(a) && pa(a, b) && ra(a));
-	if (arr[1] < arr[2] && arr[2] < arr[0])
-		return (pb(a, b) && ra(a) && ra(a) && pa(a, b) && ra(a));
-	return (ra(a) && ra(a) && ra(a));
 }
-
-int	descending_triangle_a(t_stack **a, t_stack **b, int n)
-{
-	int	arr[3];
-
-	arr[0] = (*a)->data;	
-	arr[1] = (*a)->next->data;	
-	arr[2] = (*a)->next->next->data;
-
-	if (arr[0] < arr[1] && arr[1] < arr[2])
-		return (pb(a, b) && sa(a) && ra(a) && ra(a) && pa(a, b) && ra(a));
-	if (arr[0] < arr[2] && arr[2] < arr[1])
-		return (pb(a, b) && ra(a) && ra(a) && pa(a, b) && ra(a));
-	if (arr[1] < arr[0] && arr[0] < arr[2])
-		return (pb(a, b) && sa(a) && ra(a) && pa(a, b) && ra(a) && ra(a));
-	if (arr[2] < arr[0] && arr[0] < arr[1])
-		return (sa(a) && ra(a) && ra(a) && ra(a));
-	if (arr[1] < arr[2] && arr[2] < arr[0])
-		return (ra(a) && sa(a) && ra(a) && ra(a));
-	return (ra(a) && ra(a) && ra(a));
-}
-
-int	ascending_triangle_b(t_stack **a, t_stack **b, int n)
-{
-	int	arr[3];
-
-	arr[0] = (*a)->data;	
-	arr[1] = (*a)->next->data;	
-	arr[2] = (*a)->next->next->data;
-
-	if (arr[0] < arr[1] && arr[1] < arr[2])
-		return (pb(a, b) && sa(a) && pb(a, b) && sb(b) && pb(a, b) && sb(b));
-	if (arr[0] < arr[2] && arr[2] < arr[1])
-		return (sa(a) && pb(a, b) && sa(a) && pb(a, b) && pb(a, b));
-	if (arr[1] < arr[0] && arr[0] < arr[2])
-		return (pb(a, b) && sa(a) && pb(a, b) && sb(b) && pb(a, b));
-	if (arr[2] < arr[0] && arr[0] < arr[1])
-		return (sa(a) && pb(a, b) && pb(a, b) && pb(a, b));
-	if (arr[1] < arr[2] && arr[2] < arr[0])
-		return (pb(a, b) && sa(a) && pb(a, b) && pb(a, b));
-	return (pb(a, b) && pb(a, b) && pb(a, b)); 
-}
-
-int	descending_triangle_b(t_stack **a, t_stack **b, int n)
-{
-	int	arr[3];
-
-	arr[0] = (*a)->data;	
-	arr[1] = (*a)->next->data;	
-	arr[2] = (*a)->next->next->data;
-
-	if (arr[0] < arr[2] && arr[2] < arr[1])
-		return (pb(a, b) && sa(a) && pb(a, b) && pb(a, b));
-	if (arr[1] < arr[0] && arr[0] < arr[2])
-		return (sa(a) && pb(a, b) && pb(a, b) && pb(a, b));
-	if (arr[2] < arr[0] && arr[0] < arr[1])
-		return (pb(a, b) && sa(a) && pb(a, b) && sb(b) && pb(a, b));
-	if (arr[2] < arr[1] && arr[1] < arr[0])
-		return (pb(a, b) && sa(a) && pb(a, b) && sb(b) && pb(a, b) && sb(b));
-	if (arr[1] < arr[2] && arr[2] < arr[0])
-		return (sa(a) && pb(a, b) && sa(a) && pb(a, b) && pb(a, b));
-	return (pb(a, b) && pb(a, b) && pb(a, b)); 
-}
-
 void	make_triangle(t_stack **a, t_stack **b, int depth, int n, int ascending)
 {
-	int	(*ascending_triangle)(t_stack **, t_stack **, int);
-	int	(*descending_triangle)(t_stack **, t_stack **, int);
-
 	if (depth % 2 == 0)
 	{
-		ascending_triangle = ascending_triangle_a;
-		descending_triangle = descending_triangle_a;
+		if (ascending)
+			ascending_triangle_a(a, b, n);
+		else
+			descending_triangle_a(a, b, n);
 	}
 	else
 	{
-		ascending_triangle = ascending_triangle_b;
-		descending_triangle = descending_triangle_b;
+		if (ascending)
+			ascending_triangle_b(a, b, n);
+		else
+			descending_triangle_b(a, b, n);
+		rb(b);
+		rb(b);
+		rb(b);
 	}
-	if (ascending)
+}
+
+int	ft_pow(int x, int y)
+{
+	int	pow;
+
+	pow = 1;
+	while (y--)
+		pow *= 3;
+	return (pow);
+}
+
+void	merge_ascending_a_to_b(t_stack **a, t_stack **b, t_size ts)
+{
+	while (ts.a_top + ts.a_bot + ts.b_bot)
 	{
-		ascending_triangle(a, b, n);
-		descending_triangle(a, b, n);
-		descending_triangle(a, b, n);
+		if (ts.a_top && (!ts.a_bot || (*a)->data > get_last_node(*a)->data)
+			&& (!ts.b_bot || (*a)->data > get_last_node(*b)->data))
+			ts.a_top -= pb(a, b);
+		else if (ts.a_bot && (!ts.a_top || get_last_node(*a)->data > (*a)->data)
+			&& (!ts.b_bot || get_last_node(*a)->data > get_last_node(*b)->data))
+		{
+			rra(a);
+			ts.a_bot -= pb(a, b);
+		}
+		else if (ts.b_bot && (!ts.a_top || get_last_node(*b)->data > (*a)->data)
+			&& (!ts.a_bot || get_last_node(*b)->data > get_last_node(*a)->data))
+			ts.b_bot -= rrb(b);
 	}
+}
+
+void	merge_descending_a_to_b(t_stack **a, t_stack **b, t_size ts)
+{
+	while (ts.a_top + ts.a_bot + ts.b_bot)
+	{
+		if (ts.a_top && (!ts.a_bot || (*a)->data < get_last_node(*a)->data)
+			&& (!ts.b_bot || (*a)->data < get_last_node(*b)->data))
+			ts.a_top -= pb(a, b);
+		else if (ts.a_bot && (!ts.a_top || get_last_node(*a)->data < (*a)->data)
+			&& (!ts.b_bot || get_last_node(*a)->data < get_last_node(*b)->data))
+		{
+			rra(a);
+			ts.a_bot -= pb(a, b);
+		}
+		else if (ts.b_bot && (!ts.a_top || get_last_node(*b)->data < (*a)->data)
+			&& (!ts.a_bot || get_last_node(*b)->data < get_last_node(*a)->data))
+			ts.b_bot -= rrb(b);
+	}
+}
+
+int	get_ascending(t_stack *top)
+{
+	if (!top)
+		return (0);
+	if(top->data > top->next->data)
+		return (1);
+	return (0);
+}
+
+void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
+{
+	int	i;
+	int	j;
+	int	ascending;
+	t_size	ts;
+
+	ft_printf("---------------------------------\n");
+	ft_printf("merge_start\n");
+	ft_printf("---------------------------------\n");
+	ts.a_top = 3;
+	ts.a_bot = 3;
+	ts.b_bot = 3;
+	i = n / 3;
+	while (i--)
+		pb(a, b);
+	ascending = get_ascending(*a);
+	i = 3;
+	while (i--)
+	{
+		j = n / 3;
+		if (ascending)
+			merge_ascending_a_to_b(a, b, ts);
+		else
+			merge_descending_a_to_b(a, b, ts);
+		ascending = get_ascending(*a);
+		print_state(*a, *b);
+	}
+}
+
+void	merge_b_to_a(t_stack **a, t_stack **b, int depth, int n)
+{
+	
+}
+
+void	merge(t_stack **a, t_stack **b, int depth, int n)
+{
+	if (depth % 2 == 0)
+		merge_a_to_b(a, b, depth, n);
 	else
-	{
-		descending_triangle(a, b, n);
-		ascending_triangle(a, b, n);
-		ascending_triangle(a, b, n);
-	}
+		merge_b_to_a(a, b, depth, n);
+	if (depth > 1)
+		merge(a, b, depth - 1, n);
 }
 
 void	division(t_stack **a, t_stack **b, int depth, int n, int ascending)
@@ -147,9 +161,9 @@ void	division(t_stack **a, t_stack **b, int depth, int n, int ascending)
 	{
 		if	(ascending)
 		{
+			division(a, b, depth - 1, n, 0);
+			division(a, b, depth - 1, n, 0);
 			division(a, b, depth - 1, n, 1);
-			division(a, b, depth - 1, n, 0);
-			division(a, b, depth - 1, n, 0);
 		}
 		else
 		{
@@ -161,8 +175,10 @@ void	division(t_stack **a, t_stack **b, int depth, int n, int ascending)
 	else
 	{
 		d = get_depth(*a, n);
-		make_triangle(a, b, d, n, ascending);
+		make_triangle(a, b, d, n - 1, ascending);
 	}
+
+
 }
 
 void	merge_sort(t_stack **a, t_stack **b)
@@ -173,5 +189,5 @@ void	merge_sort(t_stack **a, t_stack **b)
 	n = get_list_length(*a);
 	depth = get_depth(*a, n);
 	division(a, b, depth, n, 1);
-//	merge();
+	merge(a, b, depth, n);
 }

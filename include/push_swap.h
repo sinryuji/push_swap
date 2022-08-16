@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/15 17:38:17 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:52:38 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef struct s_pivots
 	int	pivot1;
 	int	pivot2;
 }	t_pivots;
+
+typedef struct s_size
+{
+	int	a_top;
+	int a_bot;
+	int	b_top;
+	int	b_bot;
+}	t_size;
 
 /* data_validation */
 void	integer_validation(int argc, char **argv);
@@ -115,6 +123,8 @@ void	hg_b_to_a(t_stack **a, t_stack **b);
 
 /* merge_sort.c */
 void	merge_sort(t_stack **a, t_stack **b);
+
+/* triangle.c */
 int		ascending_triangle_a(t_stack **a, t_stack **b, int n);
 int		descending_triangle_a(t_stack **a, t_stack **b, int n);
 int		ascending_triangle_b(t_stack **a, t_stack **b, int n);
