@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/16 19:08:47 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:28:42 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,17 +151,25 @@ void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
 	int	i;
 	int	ascending;
 	t_size	ts;
+	int	size;
+	int	tmp;
 
 	i = n / 3;
+	size = n;
+	tmp = depth;
+	while (tmp--)
+		size /= 3;
 	while (i--)
 		pb(a, b);
 	ascending = get_ascending(*a);
-	i = 3;
+	i = 1;
+	while (--depth)
+		i *= 3;
 	while (i--)
 	{
-		ts.a_top = 3;
-		ts.a_bot = 3;
-		ts.b_bot = 3;
+		ts.a_top = size;
+		ts.a_bot = size;
+		ts.b_bot = size;
 		if (ascending)
 			merge_ascending_a_to_b(a, b, ts);
 		else
@@ -175,17 +183,25 @@ void	merge_b_to_a(t_stack **a, t_stack **b, int depth, int n)
 	int	i;
 	int	ascending;
 	t_size	ts;
+	int	size;
+	int	tmp;
 
 	i = n / 3;
+	size = n;
+	tmp = depth;
 	while (i--)
 		pa(a, b);
+	while (tmp--)
+		size /= 3;
 	ascending = get_ascending(*b);
 	i = 1;
+	while (--depth)
+		i *= 3;
 	while (i--)
 	{
-		ts.a_bot = 9;
-		ts.b_top = 9;
-		ts.b_bot = 9;
+		ts.a_bot = size;
+		ts.b_top = size;
+		ts.b_bot = size;
 		if (ascending)
 			merge_ascending_b_to_a(a, b, ts);
 		else
