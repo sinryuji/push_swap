@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/16 18:49:41 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:08:47 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,44 @@ void	merge_descending_a_to_b(t_stack **a, t_stack **b, t_size ts)
 	}
 }
 
+void	merge_ascending_b_to_a(t_stack **a, t_stack **b, t_size ts)
+{
+	while (ts.a_bot + ts.b_top + ts.b_bot)
+	{
+		if (ts.b_top && (!ts.b_bot || (*b)->data > get_last_node(*b)->data)
+			&& (!ts.a_bot || (*b)->data > get_last_node(*a)->data))
+			ts.b_top -= pa(a, b);
+		else if (ts.b_bot && (!ts.b_top || get_last_node(*b)->data > (*b)->data)
+			&& (!ts.a_bot || get_last_node(*b)->data > get_last_node(*a)->data))
+		{
+			rrb(b);
+			ts.b_bot -= pa(a, b);
+		}
+		else if (ts.a_bot && (!ts.b_top || get_last_node(*a)->data > (*b)->data)
+			&& (!ts.b_bot || get_last_node(*a)->data > get_last_node(*b)->data))
+			ts.a_bot -= rra(a);
+	}
+}
+
+void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_size ts)
+{
+	while (ts.a_bot + ts.b_top + ts.b_bot)
+	{
+		if (ts.b_top && (!ts.b_bot || (*b)->data < get_last_node(*b)->data)
+			&& (!ts.a_bot || (*b)->data < get_last_node(*a)->data))
+			ts.b_top -= pa(a, b);
+		else if (ts.b_bot && (!ts.b_top || get_last_node(*b)->data < (*b)->data)
+			&& (!ts.a_bot || get_last_node(*b)->data < get_last_node(*a)->data))
+		{
+			rrb(b);
+			ts.b_bot -= pa(a, b);
+		}
+		else if (ts.a_bot && (!ts.b_top || get_last_node(*a)->data < (*b)->data)
+			&& (!ts.b_bot || get_last_node(*a)->data < get_last_node(*b)->data))
+			ts.a_bot -= rra(a);
+	}
+}
+
 int	get_ascending(t_stack *top)
 {
 	if (!top)
@@ -111,16 +149,9 @@ int	get_ascending(t_stack *top)
 void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
 {
 	int	i;
-	int	j;
 	int	ascending;
 	t_size	ts;
 
-	ft_printf("---------------------------------\n");
-	ft_printf("merge_start\n");
-	ft_printf("---------------------------------\n");
-	ts.a_top = 3;
-	ts.a_bot = 3;
-	ts.b_bot = 3;
 	i = n / 3;
 	while (i--)
 		pb(a, b);
@@ -128,19 +159,39 @@ void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
 	i = 3;
 	while (i--)
 	{
-		j = n / 3;
+		ts.a_top = 3;
+		ts.a_bot = 3;
+		ts.b_bot = 3;
 		if (ascending)
 			merge_ascending_a_to_b(a, b, ts);
 		else
 			merge_descending_a_to_b(a, b, ts);
 		ascending = get_ascending(*a);
-		print_state(*a, *b);
 	}
 }
 
 void	merge_b_to_a(t_stack **a, t_stack **b, int depth, int n)
 {
-	
+	int	i;
+	int	ascending;
+	t_size	ts;
+
+	i = n / 3;
+	while (i--)
+		pa(a, b);
+	ascending = get_ascending(*b);
+	i = 1;
+	while (i--)
+	{
+		ts.a_bot = 9;
+		ts.b_top = 9;
+		ts.b_bot = 9;
+		if (ascending)
+			merge_ascending_b_to_a(a, b, ts);
+		else
+			merge_descending_b_to_a(a, b, ts);
+		ascending = get_ascending(*b);
+	}
 }
 
 void	merge(t_stack **a, t_stack **b, int depth, int n)
