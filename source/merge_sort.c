@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/17 19:27:46 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/17 19:33:07 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,7 @@ void	merge_sort(t_stack **a, t_stack **b)
 	t_fc	*fc;
 	t_info	info;
 	t_stacks	stacks;
-	int	cnt = 1;
+	t_fc	*tmp;
 
 	fc = NULL;
 	stacks.a = a;
@@ -284,5 +284,11 @@ void	merge_sort(t_stack **a, t_stack **b)
 	info.depth = get_depth(*a, info.n);
 	division(stacks, &fc, info, 1);
 	do_division(stacks, fc, info);
+	while (fc)
+	{
+		tmp = fc;
+		fc = tmp->next;
+		free(tmp);
+	}
 	merge(a, b, info.depth, info.n);
 }
