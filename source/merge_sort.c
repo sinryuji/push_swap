@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/16 19:28:42 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/17 19:27:46 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,6 @@ int	get_depth(t_stack *a, int n)
 	}
 
 	return (depth);
-}
-
-void	make_triangle_a(t_stack **a, t_stack **b, int (*fp)(t_stack, t_stack, int))
-{
-
-}
-void	make_triangle(t_stack **a, t_stack **b, int depth, int n, int ascending)
-{
-	if (depth % 2 == 0)
-	{
-		if (ascending)
-			ascending_triangle_a(a, b, n);
-		else
-			descending_triangle_a(a, b, n);
-	}
-	else
-	{
-		if (ascending)
-			ascending_triangle_b(a, b, n);
-		else
-			descending_triangle_b(a, b, n);
-		rb(b);
-		rb(b);
-		rb(b);
-	}
 }
 
 int	ft_pow(int x, int y)
@@ -220,41 +195,94 @@ void	merge(t_stack **a, t_stack **b, int depth, int n)
 		merge(a, b, depth - 1, n);
 }
 
-void	division(t_stack **a, t_stack **b, int depth, int n, int ascending)
+void	make_triangle(t_fc **fc, t_info info, int ascending)
 {
-	int	d;
+	t_fc	*new;
 
-	if (depth > 0)
+	new = (t_fc *)malloc(sizeof(t_fc));
+	if (info.depth % 2 == 0)
 	{
+		if (ascending)
+			new->make_triangle = ascending_triangle_a;
+		else
+			new->make_triangle = descending_triangle_a;
+	}
+	else
+	{
+		if (ascending)
+			new->make_triangle = ascending_triangle_b;
+		else
+			new->make_triangle = descending_triangle_b;
+	}
+	new->next = *fc;
+	new->prev = NULL;
+	if (*fc)
+		(*fc)->prev = new;
+	*fc = new;
+}
+
+void	division(t_stacks stacks, t_fc **fc, t_info info, int ascending)
+{
+	if (info.depth > 0)
+	{
+		info.depth--;
 		if	(ascending)
 		{
-			division(a, b, depth - 1, n, 0);
-			division(a, b, depth - 1, n, 0);
-			division(a, b, depth - 1, n, 1);
+			division(stacks, fc, info, 0);
+			division(stacks, fc, info, 0);
+			division(stacks, fc, info, 1);
 		}
 		else
 		{
-			division(a, b, depth - 1, n, 0);
-			division(a, b, depth - 1, n, 1);
-			division(a, b, depth - 1, n, 1);
+			division(stacks, fc, info, 0);
+			division(stacks, fc, info, 1);
+			division(stacks, fc, info, 1);
 		}
 	}
 	else
 	{
-		d = get_depth(*a, n);
-		make_triangle(a, b, d, n - 1, ascending);
+		info.depth = get_depth(*(stacks.a), info.n);
+		info.n--;
+		make_triangle(fc, info, ascending);
 	}
 
+}
 
+void	do_division(t_stacks stacks, t_fc *fc, t_info info)
+{
+	if (info.depth % 2 == 1)
+	{
+		while (fc)
+		{
+			fc->make_triangle(stacks.a, stacks.b, info.n);
+			fc = fc->next;
+		}
+	}
+	else
+	{
+		while (fc->next)
+			fc = fc->next;
+		while (fc)
+		{
+			fc->make_triangle(stacks.a, stacks.b, info.n);
+			fc = fc->prev;
+		}
+	}
 }
 
 void	merge_sort(t_stack **a, t_stack **b)
 {
-	int	n;
-	int	depth;
+	t_fc	*fc;
+	t_info	info;
+	t_stacks	stacks;
+	int	cnt = 1;
 
-	n = get_list_length(*a);
-	depth = get_depth(*a, n);
-	division(a, b, depth, n, 1);
-	merge(a, b, depth, n);
+	fc = NULL;
+	stacks.a = a;
+	stacks.b = b;
+	info.n = get_list_length(*a);
+	info.depth = get_depth(*a, info.n);
+	division(stacks, &fc, info, 1);
+	do_division(stacks, fc, info);
+	merge(a, b, info.depth, info.n);
 }

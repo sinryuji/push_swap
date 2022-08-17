@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/16 17:52:38 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/17 19:03:55 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../lib/ft_printf/include/ft_printf.h"
+# include "../lib/ft_printf/lib//libft/include/libft.h"
 
 typedef struct s_stack
 {
@@ -35,6 +36,25 @@ typedef struct s_size
 	int	b_top;
 	int	b_bot;
 }	t_size;
+
+typedef struct	s_function_chain
+{
+	int	(*make_triangle)(t_stack **, t_stack **, int);
+	struct s_function_chain	*next;
+	struct s_function_chain	*prev;
+}	t_fc;
+
+typedef	struct	s_info
+{
+	int	depth;
+	int	n;
+}	t_info;
+
+typedef	struct	s_stacks
+{
+	t_stack **a;
+	t_stack **b;
+}	t_stacks;
 
 /* data_validation */
 void	integer_validation(int argc, char **argv);
