@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/17 19:29:27 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:58:13 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int	main(int argc, char **argv)
 //	hourglass_sort(&a, &b);
 	merge_sort(&a, &b);
 	print_state(a, b);
-	while (1);
 	return (0);
 }

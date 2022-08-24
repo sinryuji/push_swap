@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/17 19:33:07 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:57:56 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ int	get_depth(t_stack *a, int n)
 	}
 
 	return (depth);
-}
-
-int	ft_pow(int x, int y)
-{
-	int	pow;
-
-	pow = 1;
-	while (y--)
-		pow *= 3;
-	return (pow);
 }
 
 void	merge_ascending_a_to_b(t_stack **a, t_stack **b, t_size ts)
