@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/24 17:57:56 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/25 15:58:44 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,14 @@ void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_size ts)
 	}
 }
 
-int	get_ascending(t_stack *top)
-{
-	if (!top)
-		return (0);
-	if(top->data > top->next->data)
-		return (1);
-	return (0);
-}
+//int	get_ascending(t_stack *top)
+//{
+//	if (!top)
+//		return (0);
+//	if(top->data > top->next->data)
+//		return (1);
+//	return (0);
+//}
 
 void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
 {
@@ -256,6 +256,58 @@ void	do_division(t_stacks stacks, t_fc *fc, t_info info)
 		{
 			fc->make_triangle(stacks.a, stacks.b, info.n);
 			fc = fc->prev;
+		}
+	}
+}
+
+// 0, 3, 6	전부 디센딩
+// 1, 4, 7	1, 4 어센딩 7 디센딩
+// 2, 5, 8	전부 어센딩
+//
+// 0, 3, 6, 7		디센딩
+// 1, 2, 4, 5, 8	어센딩
+
+
+// pow 3
+// 0, 1 디센딩 2 어센딩
+int	get_ascending(int pow, int i, int n)
+{
+	if (i % 3 == 0)
+		return (0);
+	else if (i % 3 == 2)
+		return (1);
+	else
+	{
+		if (i < pow / 3)
+	}
+}
+void	divi(t_stack **a, t_stack **b, int n, int depth)
+{
+	int	pow;
+	int	i;
+
+	pow = ft_pow(3, depth);
+	if (depth % 2 == 1)
+	{
+		i = 0;
+		while (i < pow)
+		{
+			if (get_ascending(pow, i, n))
+				ascending_triangle_a(a, b, n);
+			else
+				descending_triangle_a(a, b, n);
+			i++;
+		}
+	}
+	else
+	{
+		i = pow;
+		while (i--)
+		{
+			if (get_ascending(pow, i, n))
+				ascending_triangle_b(a, b, n);
+			else
+				descending_triangle_b(a, b, n);
 		}
 	}
 }
