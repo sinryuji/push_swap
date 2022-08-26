@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/17 19:03:55 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:15:41 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef	struct	s_info
 {
 	int	depth;
 	int	n;
+	int	pow;
 }	t_info;
 
 typedef	struct	s_stacks

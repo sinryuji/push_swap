@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/25 15:58:44 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:20:59 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
 		size /= 3;
 	while (i--)
 		pb(a, b);
-	ascending = get_ascending(*a);
+//	ascending = get_ascending(*a);
 	i = 1;
 	while (--depth)
 		i *= 3;
@@ -139,7 +139,7 @@ void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
 			merge_ascending_a_to_b(a, b, ts);
 		else
 			merge_descending_a_to_b(a, b, ts);
-		ascending = get_ascending(*a);
+//		ascending = get_ascending(*a);
 	}
 }
 
@@ -158,7 +158,7 @@ void	merge_b_to_a(t_stack **a, t_stack **b, int depth, int n)
 		pa(a, b);
 	while (tmp--)
 		size /= 3;
-	ascending = get_ascending(*b);
+//	ascending = get_ascending(*b);
 	i = 1;
 	while (--depth)
 		i *= 3;
@@ -171,7 +171,7 @@ void	merge_b_to_a(t_stack **a, t_stack **b, int depth, int n)
 			merge_ascending_b_to_a(a, b, ts);
 		else
 			merge_descending_b_to_a(a, b, ts);
-		ascending = get_ascending(*b);
+//		ascending = get_ascending(*b);
 	}
 }
 
@@ -260,54 +260,41 @@ void	do_division(t_stacks stacks, t_fc *fc, t_info info)
 	}
 }
 
-// 0, 3, 6	전부 디센딩
-// 1, 4, 7	1, 4 어센딩 7 디센딩
-// 2, 5, 8	전부 어센딩
-//
-// 0, 3, 6, 7		디센딩
-// 1, 2, 4, 5, 8	어센딩
-
-
-// pow 3
-// 0, 1 디센딩 2 어센딩
-int	get_ascending(int pow, int i, int n)
+int	get_ascending(int pow, int i)
 {
-	if (i % 3 == 0)
-		return (0);
-	else if (i % 3 == 2)
+	if (pow == 1)
 		return (1);
+	else if (i < pow * 2 / 3)
+		return (!get_ascending(pow / 3, (pow / 3 - 1) - (i % (pow / 3))));
 	else
-	{
-		if (i < pow / 3)
-	}
+		return (get_ascending(pow / 3, i - pow * 2 / 3));
 }
-void	divi(t_stack **a, t_stack **b, int n, int depth)
+
+void	divi(t_stack **a, t_stack **b, t_info info)
 {
-	int	pow;
 	int	i;
 
-	pow = ft_pow(3, depth);
-	if (depth % 2 == 1)
+	if (info.depth % 2 == 1)
 	{
 		i = 0;
-		while (i < pow)
+		while (i < info.pow)
 		{
-			if (get_ascending(pow, i, n))
-				ascending_triangle_a(a, b, n);
+			if (get_ascending(info.pow, i))
+				ascending_triangle_a(a, b, info.n);
 			else
-				descending_triangle_a(a, b, n);
+				descending_triangle_a(a, b, info.n);
 			i++;
 		}
 	}
 	else
 	{
-		i = pow;
+		i = info.pow;
 		while (i--)
 		{
-			if (get_ascending(pow, i, n))
-				ascending_triangle_b(a, b, n);
+			if (get_ascending(info.pow, i))
+				ascending_triangle_b(a, b, info.n);
 			else
-				descending_triangle_b(a, b, n);
+				descending_triangle_b(a, b, info.n);
 		}
 	}
 }
@@ -324,13 +311,15 @@ void	merge_sort(t_stack **a, t_stack **b)
 	stacks.b = b;
 	info.n = get_list_length(*a);
 	info.depth = get_depth(*a, info.n);
-	division(stacks, &fc, info, 1);
-	do_division(stacks, fc, info);
-	while (fc)
-	{
-		tmp = fc;
-		fc = tmp->next;
-		free(tmp);
-	}
-	merge(a, b, info.depth, info.n);
+	info.pow = ft_pow(3, info.depth);
+//	division(stacks, &fc, info, 1);
+//	do_division(stacks, fc, info);
+//	while (fc)
+//	{
+//		tmp = fc;
+//		fc = tmp->next;
+//		free(tmp);
+//	}
+//	merge(a, b, info.depth, info.n);
+	divi(a, b, info);
 }
