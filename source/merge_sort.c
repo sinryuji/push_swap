@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/26 17:20:59 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/28 21:29:30 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,79 +26,107 @@ int	get_depth(t_stack *a, int n)
 	return (depth);
 }
 
-void	merge_ascending_a_to_b(t_stack **a, t_stack **b, t_size ts)
+void	merge_ascending_a_to_b(t_stack **a, t_stack **b, t_info info, int i)
 {
-	while (ts.a_top + ts.a_bot + ts.b_bot)
+	int	a_top;
+	int	a_bot;
+	int	b_bot;
+
+	a_top = get_size(info.pow, i + 1, info.n);
+	a_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	b_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
+	while (a_top + a_bot + b_bot)
 	{
-		if (ts.a_top && (!ts.a_bot || (*a)->data > get_last_node(*a)->data)
-			&& (!ts.b_bot || (*a)->data > get_last_node(*b)->data))
-			ts.a_top -= pb(a, b);
-		else if (ts.a_bot && (!ts.a_top || get_last_node(*a)->data > (*a)->data)
-			&& (!ts.b_bot || get_last_node(*a)->data > get_last_node(*b)->data))
+		if (a_top && (!a_bot || (*a)->data > get_last_node(*a)->data)
+			&& (!b_bot || (*a)->data > get_last_node(*b)->data))
+			a_top -= pb(a, b);
+		else if (a_bot && (!a_top || get_last_node(*a)->data > (*a)->data)
+			&& (!b_bot || get_last_node(*a)->data > get_last_node(*b)->data))
 		{
 			rra(a);
-			ts.a_bot -= pb(a, b);
+			a_bot -= pb(a, b);
 		}
-		else if (ts.b_bot && (!ts.a_top || get_last_node(*b)->data > (*a)->data)
-			&& (!ts.a_bot || get_last_node(*b)->data > get_last_node(*a)->data))
-			ts.b_bot -= rrb(b);
+		else if (b_bot && (!a_top || get_last_node(*b)->data > (*a)->data)
+			&& (!a_bot || get_last_node(*b)->data > get_last_node(*a)->data))
+			b_bot -= rrb(b);
 	}
 }
 
-void	merge_descending_a_to_b(t_stack **a, t_stack **b, t_size ts)
+void	merge_descending_a_to_b(t_stack **a, t_stack **b, t_info info, int i)
 {
-	while (ts.a_top + ts.a_bot + ts.b_bot)
+	int	a_top;
+	int	a_bot;
+	int	b_bot;
+
+	a_top = get_size(info.pow, i + 1, info.n);
+	a_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	b_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
+	while (a_top + a_bot + b_bot)
 	{
-		if (ts.a_top && (!ts.a_bot || (*a)->data < get_last_node(*a)->data)
-			&& (!ts.b_bot || (*a)->data < get_last_node(*b)->data))
-			ts.a_top -= pb(a, b);
-		else if (ts.a_bot && (!ts.a_top || get_last_node(*a)->data < (*a)->data)
-			&& (!ts.b_bot || get_last_node(*a)->data < get_last_node(*b)->data))
+		if (a_top && (!a_bot || (*a)->data < get_last_node(*a)->data)
+			&& (!b_bot || (*a)->data < get_last_node(*b)->data))
+			a_top -= pb(a, b);
+		else if (a_bot && (!a_top || get_last_node(*a)->data < (*a)->data)
+			&& (!b_bot || get_last_node(*a)->data < get_last_node(*b)->data))
 		{
 			rra(a);
-			ts.a_bot -= pb(a, b);
+			a_bot -= pb(a, b);
 		}
-		else if (ts.b_bot && (!ts.a_top || get_last_node(*b)->data < (*a)->data)
-			&& (!ts.a_bot || get_last_node(*b)->data < get_last_node(*a)->data))
-			ts.b_bot -= rrb(b);
+		else if (b_bot && (!a_top || get_last_node(*b)->data < (*a)->data)
+			&& (!a_bot || get_last_node(*b)->data < get_last_node(*a)->data))
+			b_bot -= rrb(b);
 	}
 }
 
-void	merge_ascending_b_to_a(t_stack **a, t_stack **b, t_size ts)
+void	merge_ascending_b_to_a(t_stack **a, t_stack **b, t_info info, int i)
 {
-	while (ts.a_bot + ts.b_top + ts.b_bot)
+	int	a_bot;
+	int	b_top;
+	int	b_bot;
+
+	a_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
+	b_top = get_size(info.pow, i + 1, info.n);
+	b_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	while (a_bot + b_top + b_bot)
 	{
-		if (ts.b_top && (!ts.b_bot || (*b)->data > get_last_node(*b)->data)
-			&& (!ts.a_bot || (*b)->data > get_last_node(*a)->data))
-			ts.b_top -= pa(a, b);
-		else if (ts.b_bot && (!ts.b_top || get_last_node(*b)->data > (*b)->data)
-			&& (!ts.a_bot || get_last_node(*b)->data > get_last_node(*a)->data))
+		if (b_top && (!b_bot || (*b)->data > get_last_node(*b)->data)
+			&& (!a_bot || (*b)->data > get_last_node(*a)->data))
+			b_top -= pa(a, b);
+		else if (b_bot && (!b_top || get_last_node(*b)->data > (*b)->data)
+			&& (!a_bot || get_last_node(*b)->data > get_last_node(*a)->data))
 		{
 			rrb(b);
-			ts.b_bot -= pa(a, b);
+			b_bot -= pa(a, b);
 		}
-		else if (ts.a_bot && (!ts.b_top || get_last_node(*a)->data > (*b)->data)
-			&& (!ts.b_bot || get_last_node(*a)->data > get_last_node(*b)->data))
-			ts.a_bot -= rra(a);
+		else if (a_bot && (!b_top || get_last_node(*a)->data > (*b)->data)
+			&& (!b_bot || get_last_node(*a)->data > get_last_node(*b)->data))
+			a_bot -= rra(a);
 	}
 }
 
-void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_size ts)
+void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_info info, int i)
 {
-	while (ts.a_bot + ts.b_top + ts.b_bot)
+	int	a_bot;
+	int	b_top;
+	int	b_bot;
+
+	a_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
+	b_top = get_size(info.pow, i + 1, info.n);
+	b_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	while (a_bot + b_top + b_bot)
 	{
-		if (ts.b_top && (!ts.b_bot || (*b)->data < get_last_node(*b)->data)
-			&& (!ts.a_bot || (*b)->data < get_last_node(*a)->data))
-			ts.b_top -= pa(a, b);
-		else if (ts.b_bot && (!ts.b_top || get_last_node(*b)->data < (*b)->data)
-			&& (!ts.a_bot || get_last_node(*b)->data < get_last_node(*a)->data))
+		if (b_top && (!b_bot || (*b)->data < get_last_node(*b)->data)
+			&& (!a_bot || (*b)->data < get_last_node(*a)->data))
+			b_top -= pa(a, b);
+		else if (b_bot && (!b_top || get_last_node(*b)->data < (*b)->data)
+			&& (!a_bot || get_last_node(*b)->data < get_last_node(*a)->data))
 		{
 			rrb(b);
-			ts.b_bot -= pa(a, b);
+			b_bot -= pa(a, b);
 		}
-		else if (ts.a_bot && (!ts.b_top || get_last_node(*a)->data < (*b)->data)
-			&& (!ts.b_bot || get_last_node(*a)->data < get_last_node(*b)->data))
-			ts.a_bot -= rra(a);
+		else if (a_bot && (!b_top || get_last_node(*a)->data < (*b)->data)
+			&& (!b_bot || get_last_node(*a)->data < get_last_node(*b)->data))
+			a_bot -= rra(a);
 	}
 }
 
@@ -111,79 +139,79 @@ void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_size ts)
 //	return (0);
 //}
 
-void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
-{
-	int	i;
-	int	ascending;
-	t_size	ts;
-	int	size;
-	int	tmp;
+//void	merge_a_to_b(t_stack **a, t_stack **b, int depth, int n)
+//{
+//	int	i;
+//	int	ascending;
+//	t_size	ts;
+//	int	size;
+//	int	tmp;
+//
+//	i = n / 3;
+//	size = n;
+//	tmp = depth;
+//	while (tmp--)
+//		size /= 3;
+//	while (i--)
+//		pb(a, b);
+////	ascending = get_ascending(*a);
+//	i = 1;
+//	while (--depth)
+//		i *= 3;
+//	while (i--)
+//	{
+//		ts.a_top = size;
+//		ts.a_bot = size;
+//		ts.b_bot = size;
+//		if (ascending)
+//			merge_ascending_a_to_b(a, b, ts);
+//		else
+//			merge_descending_a_to_b(a, b, ts);
+////		ascending = get_ascending(*a);
+//	}
+//}
+//
+//void	merge_b_to_a(t_stack **a, t_stack **b, int depth, int n)
+//{
+//	int	i;
+//	int	ascending;
+//	t_size	ts;
+//	int	size;
+//	int	tmp;
+//
+//	i = n / 3;
+//	size = n;
+//	tmp = depth;
+//	while (i--)
+//		pa(a, b);
+//	while (tmp--)
+//		size /= 3;
+////	ascending = get_ascending(*b);
+//	i = 1;
+//	while (--depth)
+//		i *= 3;
+//	while (i--)
+//	{
+//		ts.a_bot = size;
+//		ts.b_top = size;
+//		ts.b_bot = size;
+//		if (ascending)
+//			merge_ascending_b_to_a(a, b, ts);
+//		else
+//			merge_descending_b_to_a(a, b, ts);
+////		ascending = get_ascending(*b);
+//	}
+//}
 
-	i = n / 3;
-	size = n;
-	tmp = depth;
-	while (tmp--)
-		size /= 3;
-	while (i--)
-		pb(a, b);
-//	ascending = get_ascending(*a);
-	i = 1;
-	while (--depth)
-		i *= 3;
-	while (i--)
-	{
-		ts.a_top = size;
-		ts.a_bot = size;
-		ts.b_bot = size;
-		if (ascending)
-			merge_ascending_a_to_b(a, b, ts);
-		else
-			merge_descending_a_to_b(a, b, ts);
-//		ascending = get_ascending(*a);
-	}
-}
-
-void	merge_b_to_a(t_stack **a, t_stack **b, int depth, int n)
-{
-	int	i;
-	int	ascending;
-	t_size	ts;
-	int	size;
-	int	tmp;
-
-	i = n / 3;
-	size = n;
-	tmp = depth;
-	while (i--)
-		pa(a, b);
-	while (tmp--)
-		size /= 3;
-//	ascending = get_ascending(*b);
-	i = 1;
-	while (--depth)
-		i *= 3;
-	while (i--)
-	{
-		ts.a_bot = size;
-		ts.b_top = size;
-		ts.b_bot = size;
-		if (ascending)
-			merge_ascending_b_to_a(a, b, ts);
-		else
-			merge_descending_b_to_a(a, b, ts);
-//		ascending = get_ascending(*b);
-	}
-}
-
-void	merge(t_stack **a, t_stack **b, int depth, int n)
-{
-	if (depth % 2 == 0)
-		merge_a_to_b(a, b, depth, n);
-	else
-		merge_b_to_a(a, b, depth, n);
-	if (depth > 1)
-		merge(a, b, depth - 1, n);
-}
+//void	merge(t_stack **a, t_stack **b, int depth, int n)
+//{
+//	if (depth % 2 == 0)
+//		merge_a_to_b(a, b, depth, n);
+//	else
+//		merge_b_to_a(a, b, depth, n);
+//	if (depth > 1)
+//		merge(a, b, depth - 1, n);
+//}
 
 void	make_triangle(t_fc **fc, t_info info, int ascending)
 {
@@ -270,11 +298,16 @@ int	get_ascending(int pow, int i)
 		return (get_ascending(pow / 3, i - pow * 2 / 3));
 }
 
+int	get_size(int pow, int i, int n)
+{
+	return (n / pow + (n % pow > i));
+}
+
 void	divi(t_stack **a, t_stack **b, t_info info)
 {
 	int	i;
 
-	if (info.depth % 2 == 1)
+	if (info.depth % 2 == 0)
 	{
 		i = 0;
 		while (i < info.pow)
@@ -296,6 +329,60 @@ void	divi(t_stack **a, t_stack **b, t_info info)
 			else
 				descending_triangle_b(a, b, info.n);
 		}
+	}
+}
+
+void	mer_a_to_b(t_stack **a, t_stack **b, t_info info)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	size = 0;
+	while (i < info.pow / 3)
+		size += get_size(info.pow, i++, info.n);
+	while (size--)
+		pb(a, b);
+	while (i--)
+	{
+		if (get_ascending(info.pow / 3, i))
+			merge_ascending_a_to_b(a, b, info, i);
+		else
+			merge_descending_a_to_b(a, b, info, i);
+	}
+}
+
+void	mer_b_to_a(t_stack **a, t_stack **b, t_info info)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	size = 0;
+	while (i < info.pow / 3)
+		size += get_size(info.pow, i++, info.n);
+	while (size--)
+		pa(a, b);
+	while (i--)
+	{
+		if (get_ascending(info.pow / 3, i))
+			merge_ascending_b_to_a(a, b, info, i);
+		else
+			merge_descending_b_to_a(a, b, info, i);
+	}
+}
+
+void	mer(t_stack **a, t_stack **b, t_info info)
+{
+	if (info.depth % 2 == 0)
+		mer_a_to_b(a, b, info);
+	else
+		mer_b_to_a(a, b, info);
+	if (info.depth > 1)
+	{
+		info.depth--;
+		info.pow /= 3;
+		mer(a, b, info);
 	}
 }
 
@@ -322,4 +409,5 @@ void	merge_sort(t_stack **a, t_stack **b)
 //	}
 //	merge(a, b, info.depth, info.n);
 	divi(a, b, info);
+	mer(a, b, info);
 }

@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/26 17:15:41 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/28 21:03:22 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void	hg_b_to_a(t_stack **a, t_stack **b);
 
 /* merge_sort.c */
 void	merge_sort(t_stack **a, t_stack **b);
+int		get_size(int pow, int i, int n);
 
 /* triangle.c */
 int		ascending_triangle_a(t_stack **a, t_stack **b, int n);
