@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/28 21:29:30 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/01 08:20:07 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_depth(t_stack *a, int n)
 	depth = 0;
 	while (n > 3)
 	{
-		n /= 3;
+		n = n / 3 + n % 3;
 		depth++;
 	}
 
@@ -32,9 +32,14 @@ void	merge_ascending_a_to_b(t_stack **a, t_stack **b, t_info info, int i)
 	int	a_bot;
 	int	b_bot;
 
-	a_top = get_size(info.pow, i + 1, info.n);
-	a_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	a_top = get_size(info.pow, info.pow / 3 * 2 - i - 1, info.n);
+	a_bot = get_size(info.pow, info.pow / 3 * 2 + i, info.n);
 	b_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
+//	ft_printf("a_top : %d\n", a_top);
+//	ft_printf("a_bot : %d\n", a_bot);
+//	ft_printf("b_bot : %d\n", b_bot);
+//	print_state(*a, *b);
+	ft_printf("sum : %d\n", a_top + a_bot + b_bot);
 	while (a_top + a_bot + b_bot)
 	{
 		if (a_top && (!a_bot || (*a)->data > get_last_node(*a)->data)
@@ -49,6 +54,7 @@ void	merge_ascending_a_to_b(t_stack **a, t_stack **b, t_info info, int i)
 		else if (b_bot && (!a_top || get_last_node(*b)->data > (*a)->data)
 			&& (!a_bot || get_last_node(*b)->data > get_last_node(*a)->data))
 			b_bot -= rrb(b);
+//		ft_printf("sum : %d\n", a_top + a_bot + b_bot);
 	}
 }
 
@@ -58,9 +64,14 @@ void	merge_descending_a_to_b(t_stack **a, t_stack **b, t_info info, int i)
 	int	a_bot;
 	int	b_bot;
 
-	a_top = get_size(info.pow, i + 1, info.n);
-	a_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	a_top = get_size(info.pow, info.pow / 3 * 2 - i - 1, info.n);
+	a_bot = get_size(info.pow, info.pow / 3 * 2 + i, info.n);
 	b_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
+//	ft_printf("a_top : %d\n", a_top);
+//	ft_printf("a_bot : %d\n", a_bot);
+//	ft_printf("b_bot : %d\n", b_bot);
+//	print_state(*a, *b);
+	ft_printf("sum : %d\n", a_top + a_bot + b_bot);
 	while (a_top + a_bot + b_bot)
 	{
 		if (a_top && (!a_bot || (*a)->data < get_last_node(*a)->data)
@@ -75,6 +86,7 @@ void	merge_descending_a_to_b(t_stack **a, t_stack **b, t_info info, int i)
 		else if (b_bot && (!a_top || get_last_node(*b)->data < (*a)->data)
 			&& (!a_bot || get_last_node(*b)->data < get_last_node(*a)->data))
 			b_bot -= rrb(b);
+//		ft_printf("sum : %d\n", a_top + a_bot + b_bot);
 	}
 }
 
@@ -85,8 +97,12 @@ void	merge_ascending_b_to_a(t_stack **a, t_stack **b, t_info info, int i)
 	int	b_bot;
 
 	a_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
-	b_top = get_size(info.pow, i + 1, info.n);
-	b_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	b_top = get_size(info.pow, info.pow / 3 * 2 - i - 1, info.n);
+	b_bot = get_size(info.pow, info.pow / 3 * 2 + i, info.n);
+//	ft_printf("a_bot : %d\n", a_bot);
+//	ft_printf("b_top : %d\n", b_top);
+//	ft_printf("b_bot : %d\n", b_bot);
+	ft_printf("sum : %d\n", a_bot + b_top + b_bot);
 	while (a_bot + b_top + b_bot)
 	{
 		if (b_top && (!b_bot || (*b)->data > get_last_node(*b)->data)
@@ -111,8 +127,12 @@ void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_info info, int i)
 	int	b_bot;
 
 	a_bot = get_size(info.pow, info.pow / 3 - i - 1, info.n);
-	b_top = get_size(info.pow, i + 1, info.n);
-	b_bot = get_size(info.pow, i + info.pow / 3 * 2, info.n);
+	b_top = get_size(info.pow, info.pow / 3 * 2 - i - 1, info.n);
+	b_bot = get_size(info.pow, info.pow / 3 * 2 + i, info.n);
+//	ft_printf("a_bot : %d\n", a_bot);
+//	ft_printf("b_top : %d\n", b_top);
+//	ft_printf("b_bot : %d\n", b_bot);
+	ft_printf("sum : %d\n", a_bot + b_top + b_bot);
 	while (a_bot + b_top + b_bot)
 	{
 		if (b_top && (!b_bot || (*b)->data < get_last_node(*b)->data)
@@ -213,58 +233,58 @@ void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_info info, int i)
 //		merge(a, b, depth - 1, n);
 //}
 
-void	make_triangle(t_fc **fc, t_info info, int ascending)
-{
-	t_fc	*new;
+//void	make_triangle(t_fc **fc, t_info info, int ascending)
+//{
+//	t_fc	*new;
+//
+//	new = (t_fc *)malloc(sizeof(t_fc));
+//	if (info.depth % 2 == 0)
+//	{
+//		if (ascending)
+//			new->make_triangle = ascending_triangle_a;
+//		else
+//			new->make_triangle = descending_triangle_a;
+//	}
+//	else
+//	{
+//		if (ascending)
+//			new->make_triangle = ascending_triangle_b;
+//		else
+//			new->make_triangle = descending_triangle_b;
+//	}
+//	new->next = *fc;
+//	new->prev = NULL;
+//	if (*fc)
+//		(*fc)->prev = new;
+//	*fc = new;
+//}
 
-	new = (t_fc *)malloc(sizeof(t_fc));
-	if (info.depth % 2 == 0)
-	{
-		if (ascending)
-			new->make_triangle = ascending_triangle_a;
-		else
-			new->make_triangle = descending_triangle_a;
-	}
-	else
-	{
-		if (ascending)
-			new->make_triangle = ascending_triangle_b;
-		else
-			new->make_triangle = descending_triangle_b;
-	}
-	new->next = *fc;
-	new->prev = NULL;
-	if (*fc)
-		(*fc)->prev = new;
-	*fc = new;
-}
-
-void	division(t_stacks stacks, t_fc **fc, t_info info, int ascending)
-{
-	if (info.depth > 0)
-	{
-		info.depth--;
-		if	(ascending)
-		{
-			division(stacks, fc, info, 0);
-			division(stacks, fc, info, 0);
-			division(stacks, fc, info, 1);
-		}
-		else
-		{
-			division(stacks, fc, info, 0);
-			division(stacks, fc, info, 1);
-			division(stacks, fc, info, 1);
-		}
-	}
-	else
-	{
-		info.depth = get_depth(*(stacks.a), info.n);
-		info.n--;
-		make_triangle(fc, info, ascending);
-	}
-
-}
+//void	division(t_stacks stacks, t_fc **fc, t_info info, int ascending)
+//{
+//	if (info.depth > 0)
+//	{
+//		info.depth--;
+//		if	(ascending)
+//		{
+//			division(stacks, fc, info, 0);
+//			division(stacks, fc, info, 0);
+//			division(stacks, fc, info, 1);
+//		}
+//		else
+//		{
+//			division(stacks, fc, info, 0);
+//			division(stacks, fc, info, 1);
+//			division(stacks, fc, info, 1);
+//		}
+//	}
+//	else
+//	{
+//		info.depth = get_depth(*(stacks.a), info.n);
+//		info.n--;
+//		make_triangle(fc, info, ascending);
+//	}
+//
+//}
 
 void	do_division(t_stacks stacks, t_fc *fc, t_info info)
 {
@@ -290,17 +310,77 @@ void	do_division(t_stacks stacks, t_fc *fc, t_info info)
 
 int	get_ascending(int pow, int i)
 {
-	if (pow == 1)
-		return (1);
-	else if (i < pow * 2 / 3)
-		return (!get_ascending(pow / 3, (pow / 3 - 1) - (i % (pow / 3))));
-	else
-		return (get_ascending(pow / 3, i - pow * 2 / 3));
+	int	ret;
+
+	ret = 1;
+	while (pow > 1)
+	{
+		if (i < pow * 2 / 3)
+		{
+			i = (pow / 3 - 1) - (i % (pow / 3));
+			ret = !ret;
+		}
+		else
+			i = i - pow * 2 / 3;
+		pow /= 3;
+	}
+
+	return (ret);
 }
 
 int	get_size(int pow, int i, int n)
 {
-	return (n / pow + (n % pow > i));
+	while (pow > 1)
+	{
+//		printf("pow : %d\n", pow);
+//		printf("i : %d\n", i);
+//		printf("n : %d\n", n);
+		if (i < pow / 3)
+			n = n / 3;
+		else if (i < pow * 2 / 3)
+		{
+			n = n / 3 + (n % 3 > 0);
+			i = i - pow / 3;
+		}
+		else
+		{
+			n = n / 3 + (n % 3 > 1);
+			i = pow - 1 - i;
+		}
+		pow /= 3;
+	}
+
+	return (n);
+}
+
+int	calc_amount(size_t pow, size_t i, size_t n)
+{
+	size_t	tmp;
+
+//	printf("pow : %d\n", (int)pow);
+//	printf("i : %d\n", (int)i);
+//	printf("n : %d\n", (int)n);
+	if (pow == 1)
+		return (n);
+	else if (i < pow / 3)
+	{
+		tmp = calc_amount(pow / 3, i, n);
+//		printf("return : %d\n", (int)tmp / 3);
+		return (tmp / 3);
+	}
+	else if (i < 2 * pow / 3)
+	{
+//		tmp = calc_amount(pow / 3, 2 * pow / 3 - 1 - i, n);
+		tmp = calc_amount(pow / 3, i - pow / 3, n);
+//		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 0));
+		return (tmp / 3 + (tmp % 3 > 0));
+	}
+	else
+	{
+		tmp = calc_amount(pow / 3, pow - 1 - i, n);
+//		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 1));
+		return (tmp / 3 + (tmp % 3 > 1));
+	}
 }
 
 void	divi(t_stack **a, t_stack **b, t_info info)
@@ -312,10 +392,7 @@ void	divi(t_stack **a, t_stack **b, t_info info)
 		i = 0;
 		while (i < info.pow)
 		{
-			if (get_ascending(info.pow, i))
-				ascending_triangle_a(a, b, info.n);
-			else
-				descending_triangle_a(a, b, info.n);
+			make_triangle_a(a, b, get_size(info.pow, i, info.n), get_ascending(info.pow, i));
 			i++;
 		}
 	}
@@ -324,10 +401,7 @@ void	divi(t_stack **a, t_stack **b, t_info info)
 		i = info.pow;
 		while (i--)
 		{
-			if (get_ascending(info.pow, i))
-				ascending_triangle_b(a, b, info.n);
-			else
-				descending_triangle_b(a, b, info.n);
+			make_triangle_b(a, b, get_size(info.pow, i, info.n), get_ascending(info.pow, i));
 		}
 	}
 }
@@ -374,10 +448,16 @@ void	mer_b_to_a(t_stack **a, t_stack **b, t_info info)
 
 void	mer(t_stack **a, t_stack **b, t_info info)
 {
+	static int	cnt = 0;
+
 	if (info.depth % 2 == 0)
 		mer_a_to_b(a, b, info);
 	else
 		mer_b_to_a(a, b, info);
+//	print_state(*a, *b);
+	cnt++;
+	if (cnt == 2)
+		return ;
 	if (info.depth > 1)
 	{
 		info.depth--;

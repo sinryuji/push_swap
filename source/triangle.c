@@ -6,13 +6,32 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:48:11 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/16 16:48:44 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/08/29 18:09:36 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ascending_triangle_a(t_stack **a, t_stack **b, int n)
+int	make_triangle_a(t_stack **a, t_stack **b, int size, int ascending)
+{
+	if (size == 1)
+		return (ra(a));
+	else if (size == 2)
+	{
+		if (((*a)->data > (*a)->next->data) == ascending)
+			sa(a);
+		return (ra(a) && ra(a));
+	}
+	else
+	{
+		if (ascending)
+			return (ascending_triangle_a(a, b));
+		else
+			return (descending_triangle_a(a, b));
+	}
+}
+
+int	ascending_triangle_a(t_stack **a, t_stack **b)
 {
 	int	arr[3];
 
@@ -33,7 +52,7 @@ int	ascending_triangle_a(t_stack **a, t_stack **b, int n)
 	return (ra(a) && ra(a) && ra(a));
 }
 
-int	descending_triangle_a(t_stack **a, t_stack **b, int n)
+int	descending_triangle_a(t_stack **a, t_stack **b)
 {
 	int	arr[3];
 
@@ -54,7 +73,26 @@ int	descending_triangle_a(t_stack **a, t_stack **b, int n)
 	return (ra(a) && ra(a) && ra(a));
 }
 
-int	ascending_triangle_b(t_stack **a, t_stack **b, int n)
+int	make_triangle_b(t_stack **a, t_stack **b, int size, int ascending)
+{
+	if (size == 1)
+		return (pb(a, b));
+	else if (size == 2)
+	{
+		if (((*a)->data > (*a)->next->data) != ascending)
+			sa(a);
+		return (pb(a, b) && pb(a, b));
+	}
+	else
+	{
+		if (ascending)
+			return (ascending_triangle_b(a, b));
+		else
+			return (descending_triangle_b(a, b));
+	}
+}
+
+int	ascending_triangle_b(t_stack **a, t_stack **b)
 {
 	int	arr[3];
 
@@ -75,7 +113,7 @@ int	ascending_triangle_b(t_stack **a, t_stack **b, int n)
 	return (pb(a, b) && pb(a, b) && pb(a, b)); 
 }
 
-int	descending_triangle_b(t_stack **a, t_stack **b, int n)
+int	descending_triangle_b(t_stack **a, t_stack **b)
 {
 	int	arr[3];
 
