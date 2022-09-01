@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/01 08:20:07 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/01 13:32:34 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,59 +328,75 @@ int	get_ascending(int pow, int i)
 	return (ret);
 }
 
-int	get_size(int pow, int i, int n)
+int	get_y(int x, int pow)
 {
-	while (pow > 1)
+	int	root;
+
+	root = (pow - 1) / 2;
+	while (pow > 3)
 	{
-//		printf("pow : %d\n", pow);
-//		printf("i : %d\n", i);
-//		printf("n : %d\n", n);
-		if (i < pow / 3)
-			n = n / 3;
-		else if (i < pow * 2 / 3)
+		if (x <= pow / 3)
+			root = root;
+		else if (x <= pow * 2 / 3)
 		{
-			n = n / 3 + (n % 3 > 0);
-			i = i - pow / 3;
+			root += pow / 3;
 		}
 		else
-		{
-			n = n / 3 + (n % 3 > 1);
-			i = pow - 1 - i;
-		}
+			root -= pow / 3;
 		pow /= 3;
 	}
+	if (x % 3 == 2)
+		root++;
+	else if (x % 3 == 0)
+		root--;
 
-	return (n);
+	return (root);
 }
 
-int	calc_amount(size_t pow, size_t i, size_t n)
+int	get_size(int pow, int i, int n)
 {
-	size_t	tmp;
+	int	x;
+	int	y;
+	int	ret;
 
-//	printf("pow : %d\n", (int)pow);
-//	printf("i : %d\n", (int)i);
-//	printf("n : %d\n", (int)n);
-	if (pow == 1)
-		return (n);
-	else if (i < pow / 3)
+	x = n % pow;
+	ret = n / pow;
+	while (x)
 	{
-		tmp = calc_amount(pow / 3, i, n);
-//		printf("return : %d\n", (int)tmp / 3);
-		return (tmp / 3);
+		y = get_y(x, pow);	
+		if (i == y)
+			return (ret + 1);
+		x--;
 	}
-	else if (i < 2 * pow / 3)
-	{
-//		tmp = calc_amount(pow / 3, 2 * pow / 3 - 1 - i, n);
-		tmp = calc_amount(pow / 3, i - pow / 3, n);
-//		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 0));
-		return (tmp / 3 + (tmp % 3 > 0));
-	}
-	else
-	{
-		tmp = calc_amount(pow / 3, pow - 1 - i, n);
-//		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 1));
-		return (tmp / 3 + (tmp % 3 > 1));
-	}
+	
+	return (ret);
+//	size_t	tmp;
+//
+////	printf("pow : %d\n", (int)pow);
+////	printf("i : %d\n", (int)i);
+////	printf("n : %d\n", (int)n);
+//	if (pow == 1)
+//		return (n);
+//	else if (i < pow / 3)
+//	{
+//		tmp = get_size(pow / 3, i, n);
+////		printf("return : %d\n", (int)tmp / 3);
+//		return (tmp / 3);
+//	}
+//	else if (i < 2 * pow / 3)
+//	{
+//		tmp = get_size(pow / 3, 2 * pow / 3 - 1 - i, n);
+//		tmp = get_size(pow / 3, i - pow / 3, n);
+////		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 0));
+//		return (tmp / 3 + (tmp % 3 > 0));
+//	}
+//	else
+//	{
+//		tmp = get_size(pow / 3, pow - 1 - i, n);
+//		tmp = get_size(pow / 3, i - pow * 2 / 3, n);
+////		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 1));
+//		return (tmp / 3 + (tmp % 3 > 1));
+//	}
 }
 
 void	divi(t_stack **a, t_stack **b, t_info info)
@@ -456,8 +472,8 @@ void	mer(t_stack **a, t_stack **b, t_info info)
 		mer_b_to_a(a, b, info);
 //	print_state(*a, *b);
 	cnt++;
-	if (cnt == 2)
-		return ;
+//	if (cnt == 2)
+//		return ;
 	if (info.depth > 1)
 	{
 		info.depth--;
