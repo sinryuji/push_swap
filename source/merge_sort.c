@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/01 13:32:34 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/02 21:11:14 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,72 +331,94 @@ int	get_ascending(int pow, int i)
 int	get_y(int x, int pow)
 {
 	int	root;
+	int	range;
+	int	cnt;
 
 	root = (pow - 1) / 2;
+	range = pow / 3;
+	cnt = 0;
 	while (pow > 3)
 	{
-		if (x <= pow / 3)
-			root = root;
-		else if (x <= pow * 2 / 3)
+		if (x <= range)
+			range /= 3;
+		else if (x <= range + pow / 3)
 		{
-			root += pow / 3;
+			if (cnt % 2 == 0)
+				root += pow / 3;
+			else 
+				root -= pow / 3;
+			range += pow / 3 / 3;
 		}
 		else
-			root -= pow / 3;
+		{
+			if (cnt % 2 == 0)
+				root -= pow / 3;
+			else
+				root += pow / 3;
+			range += pow / 3 + pow / 3 / 3;
+			cnt++;
+		}
 		pow /= 3;
+		cnt++;
 	}
-	if (x % 3 == 2)
-		root++;
-	else if (x % 3 == 0)
-		root--;
+	if (cnt % 2 == 0)
+	{
+		if (x % 3 == 2)
+			root++;
+		else if (x % 3 == 0)
+			root--;
+	}
+	else
+	{
+		if (x % 3 == 2)
+			root--;
+		else if (x % 3 == 0)
+			root++;
+	}
 
 	return (root);
 }
 
+//int	get_size(int pow, int i, int n)
+//{
+//	int	x;
+//	int	y;
+//	int	ret;
+//
+//	x = n % pow;
+//	ret = n / pow;
+//	while (x)
+//	{
+//		y = get_y(x, pow);	
+//		if (i == y)
+//			return (ret + 1);
+//		x--;
+//	}
+//	
+//	return (ret);
+//}
+
 int	get_size(int pow, int i, int n)
 {
-	int	x;
-	int	y;
-	int	ret;
+	size_t	tmp;
 
-	x = n % pow;
-	ret = n / pow;
-	while (x)
+	if (pow == 1)
+		return (n);
+	else if (i < pow / 3)
 	{
-		y = get_y(x, pow);	
-		if (i == y)
-			return (ret + 1);
-		x--;
+		tmp = get_size(pow / 3, i, n);
+		return (tmp / 3);
 	}
-	
-	return (ret);
-//	size_t	tmp;
-//
-////	printf("pow : %d\n", (int)pow);
-////	printf("i : %d\n", (int)i);
-////	printf("n : %d\n", (int)n);
-//	if (pow == 1)
-//		return (n);
-//	else if (i < pow / 3)
-//	{
-//		tmp = get_size(pow / 3, i, n);
-////		printf("return : %d\n", (int)tmp / 3);
-//		return (tmp / 3);
-//	}
-//	else if (i < 2 * pow / 3)
-//	{
-//		tmp = get_size(pow / 3, 2 * pow / 3 - 1 - i, n);
-//		tmp = get_size(pow / 3, i - pow / 3, n);
-////		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 0));
-//		return (tmp / 3 + (tmp % 3 > 0));
-//	}
-//	else
-//	{
-//		tmp = get_size(pow / 3, pow - 1 - i, n);
-//		tmp = get_size(pow / 3, i - pow * 2 / 3, n);
-////		printf("return : %d\n", (int)tmp / 3 + (tmp % 3 > 1));
-//		return (tmp / 3 + (tmp % 3 > 1));
-//	}
+	else if (i < 2 * pow / 3)
+	{
+		tmp = get_size(pow / 3, 2 * pow / 3 - 1 - i, n);
+		return (tmp / 3 + (tmp % 3 > 0));
+	}
+	else
+	{
+		tmp = get_size(pow / 3, pow - 1 - i, n);
+		return (tmp / 3 + (tmp % 3 > 1));
+	}
 }
 
 void	divi(t_stack **a, t_stack **b, t_info info)
@@ -427,8 +449,8 @@ void	mer_a_to_b(t_stack **a, t_stack **b, t_info info)
 	int	i;
 	int	size;
 
-	i = 0;
 	size = 0;
+	i = 0;
 	while (i < info.pow / 3)
 		size += get_size(info.pow, i++, info.n);
 	while (size--)
@@ -447,8 +469,8 @@ void	mer_b_to_a(t_stack **a, t_stack **b, t_info info)
 	int	i;
 	int	size;
 
-	i = 0;
 	size = 0;
+	i = 0;
 	while (i < info.pow / 3)
 		size += get_size(info.pow, i++, info.n);
 	while (size--)
@@ -470,7 +492,7 @@ void	mer(t_stack **a, t_stack **b, t_info info)
 		mer_a_to_b(a, b, info);
 	else
 		mer_b_to_a(a, b, info);
-//	print_state(*a, *b);
+	print_state(*a, *b);
 	cnt++;
 //	if (cnt == 2)
 //		return ;
@@ -505,5 +527,8 @@ void	merge_sort(t_stack **a, t_stack **b)
 //	}
 //	merge(a, b, info.depth, info.n);
 	divi(a, b, info);
+	print_state(*a, *b);
+//	return ;
 	mer(a, b, info);
+	// 실제로 정렬되는 방향이랑 get으로 계산하는 것의 차이를 잘 살펴보자
 }
