@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/06 16:43:04 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:20:41 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_depth(t_stack *a, int n)
 	int	depth;
 
 	depth = 0;
-	while (n > 3)
+	while (n > 4)
 	{
 		n = n / 3 + (n % 3 > 0);
 		depth++;
@@ -220,32 +220,7 @@ int	get_size(int pow, int i, int n)
 	return (ret);
 }
 
-//int	get_size(int pow, int i, int n)
-//{
-//	int	tmp;
-//
-//	if (pow == 1)
-//		return (n);
-//	else if (i < pow / 3)
-//	{
-//		tmp = get_size(pow / 3, i, n);
-////		return (tmp / 3);
-//		return (tmp / 3 + (tmp % 3 > 1));
-//	}
-//	else if (i < 2 * pow / 3)
-//	{
-//		tmp = get_size(pow / 3, 2 * pow / 3 - 1 - i, n);
-//		return (tmp / 3 + (tmp % 3 > 0));
-//	}
-//	else
-//	{
-//		tmp = get_size(pow / 3, pow - 1 - i, n);
-////		return (tmp / 3 + (tmp % 3 > 1));
-//		return (tmp / 3);
-//	}
-//}
-
-void	divi(t_stack **a, t_stack **b, t_info info)
+void	division(t_stack **a, t_stack **b, t_info info)
 {
 	int	i;
 
@@ -268,7 +243,7 @@ void	divi(t_stack **a, t_stack **b, t_info info)
 	}
 }
 
-void	mer_a_to_b(t_stack **a, t_stack **b, t_info info, int size)
+void	merge_a_to_b(t_stack **a, t_stack **b, t_info info, int size)
 {
 	int	i;
 
@@ -284,7 +259,7 @@ void	mer_a_to_b(t_stack **a, t_stack **b, t_info info, int size)
 	}
 }
 
-void	mer_b_to_a(t_stack **a, t_stack **b, t_info info, int size)
+void	merge_b_to_a(t_stack **a, t_stack **b, t_info info, int size)
 {
 	int	i;
 
@@ -300,7 +275,7 @@ void	mer_b_to_a(t_stack **a, t_stack **b, t_info info, int size)
 	}
 }
 
-void	mer(t_stack **a, t_stack **b, t_info info)
+void	merge(t_stack **a, t_stack **b, t_info info)
 {
 	int	size;
 	int	i;
@@ -310,14 +285,14 @@ void	mer(t_stack **a, t_stack **b, t_info info)
 	while (i < info.pow / 3)
 		size += get_size(info.pow, info.pow * 2 / 3 + i++, info.n);
 	if (info.depth % 2 == 0)
-		mer_a_to_b(a, b, info, size);
+		merge_a_to_b(a, b, info, size);
 	else
-		mer_b_to_a(a, b, info, size);
+		merge_b_to_a(a, b, info, size);
 	if (info.depth > 1)
 	{
 		info.depth--;
 		info.pow /= 3;
-		mer(a, b, info);
+		merge(a, b, info);
 	}
 }
 
@@ -328,6 +303,6 @@ void	merge_sort(t_stack **a, t_stack **b)
 	info.n = get_list_length(*a);
 	info.depth = get_depth(*a, info.n);
 	info.pow = ft_pow(3, info.depth);
-	divi(a, b, info);
-	mer(a, b, info);
+	division(a, b, info);
+	merge(a, b, info);
 }
