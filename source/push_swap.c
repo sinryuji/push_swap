@@ -6,18 +6,14 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/06 18:17:55 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:49:53 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
 
-int	ascending_triangle_a_3(t_stack **a, t_stack **b);
-int	ascending_triangle_a_4(t_stack **a, t_stack **b);
-int	descending_triangle_a_3(t_stack **a, t_stack **b);
-int	descending_triangle_a_4(t_stack **a, t_stack **b);
-int	get_depth(t_stack *a, int n);
+int	make_triangle_b(t_stack **a, t_stack **b, int size, int ascending);
 
 int	main(int argc, char **argv)
 {
@@ -36,7 +32,7 @@ int	main(int argc, char **argv)
 	indexing(&a);
 //	hourglass_sort(&a, &b);
 	merge_sort(&a, &b);
-//	ascending_triangle_a_4(&a, &b);
+//	make_triangle_b(&a, &b, 4, 1);
 //	print_state(a, b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:48:11 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/06 17:31:07 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:01:08 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,22 @@ int	ascending_triangle_b_4(t_stack **a, t_stack **b)
 
 	i = 1;
 	max = *a;
-	while (i < 4)
+	while (i < 3)
 	{
 		if (get_index_node(*a, i)->data > max->data)
 			max = get_index_node(*a, i);
 		i++;
 	}
-	i = 0;
-	while (get_node_index(max, *a))
-		i += ra(a);
-	pb(a, b);
-	while (i)
-		i -= rra(a);
-	ascending_triangle_b_3(a, b);
-
-	return (1);
+	if (get_last_node(*a)->data > max->data)
+		max = get_last_node(*a);
+	if (get_node_index(max, *a) == 0)
+		return (pb(a, b) && rra(a) && ascending_triangle_b_3(a, b));
+	else if (get_node_index(max, *a) == 1)
+		return (sa(a) && pb(a, b) && rra(a) && ascending_triangle_b_3(a, b));
+	else if (get_node_index(max, *a) == 2)
+		return (ra(a) && sa(a) && pb(a, b) && rra(a) && rra(a) && ascending_triangle_b_3(a, b));
+	else
+		return (rra(a) && pb(a, b) && ascending_triangle_b_3(a, b));
 }
 
 int	descending_triangle_b_4(t_stack **a, t_stack **b)
@@ -85,21 +86,22 @@ int	descending_triangle_b_4(t_stack **a, t_stack **b)
 
 	i = 1;
 	min = *a;
-	while (i < 4)
+	while (i < 3)
 	{
 		if (get_index_node(*a, i)->data < min->data)
 			min = get_index_node(*a, i);
 		i++;
 	}
-	i = 0;
-	while (get_node_index(min, *a))
-		i += ra(a);
-	pb(a, b);
-	while (i)
-		i -= rra(a);
-	descending_triangle_b_3(a, b);
-
-	return (1);
+	if (get_last_node(*a)->data < min->data)
+		min = get_last_node(*a);
+	if (get_node_index(min, *a) == 0)
+		return (pb(a, b) && rra(a) && descending_triangle_b_3(a, b));
+	else if (get_node_index(min, *a) == 1)
+		return (sa(a) && pb(a, b) && rra(a) && descending_triangle_b_3(a, b));
+	else if (get_node_index(min, *a) == 2)
+		return (ra(a) && sa(a) && pb(a, b) && rra(a) && rra(a) && descending_triangle_b_3(a, b));
+	else
+		return (rra(a) && pb(a, b) && descending_triangle_b_3(a, b));
 }
 
 int	make_triangle_b(t_stack **a, t_stack **b, int size, int ascending)
