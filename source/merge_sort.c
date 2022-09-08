@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:31:56 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 11:41:25 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	division(t_stack **a, t_stack **b, t_info info)
 		i = 0;
 		while (i < info.pow)
 		{
-			make_triangle_a(a, b, get_size(info.pow, info.pow - 1 - i, info.n), get_ascending(info.pow, i));
+			make_triangle_a(a, b, get_size(info.pow, info.pow - 1 - i, info.n), \
+			get_ascending(info.pow, i));
 			i++;
 		}
 	}
@@ -29,7 +30,8 @@ void	division(t_stack **a, t_stack **b, t_info info)
 	{
 		i = info.pow;
 		while (i--)
-			make_triangle_b(a, b, get_size(info.pow, info.pow - 1 - i, info.n), get_ascending(info.pow, i));
+			make_triangle_b(a, b, get_size(info.pow, info.pow - 1 - i, info.n), \
+			get_ascending(info.pow, i));
 	}
 }
 

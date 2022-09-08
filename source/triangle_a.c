@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:48:11 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/07 18:09:25 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 11:47:43 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ int	ascending_triangle_a_3(t_stack **a, t_stack **b)
 {
 	int	arr[3];
 
-	arr[0] = (*a)->data;	
-	arr[1] = (*a)->next->data;	
+	arr[0] = (*a)->data;
+	arr[1] = (*a)->next->data;
 	arr[2] = (*a)->next->next->data;
-
 	if (arr[0] < arr[2] && arr[2] < arr[1])
 		return (ra(a) && sa(a) && ra(a) && ra(a));
 	if (arr[1] < arr[0] && arr[0] < arr[2])
@@ -37,10 +36,9 @@ int	descending_triangle_a_3(t_stack **a, t_stack **b)
 {
 	int	arr[3];
 
-	arr[0] = (*a)->data;	
-	arr[1] = (*a)->next->data;	
+	arr[0] = (*a)->data;
+	arr[1] = (*a)->next->data;
 	arr[2] = (*a)->next->next->data;
-
 	if (arr[0] < arr[1] && arr[1] < arr[2])
 		return (pb(a, b) && sa(a) && ra(a) && ra(a) && pa(a, b) && ra(a));
 	if (arr[0] < arr[2] && arr[2] < arr[1])
@@ -56,7 +54,7 @@ int	descending_triangle_a_3(t_stack **a, t_stack **b)
 
 int	ascending_triangle_a_4(t_stack **a, t_stack **b)
 {
-	int	i;
+	int		i;
 	t_stack	*max;
 
 	i = 1;
@@ -76,13 +74,12 @@ int	ascending_triangle_a_4(t_stack **a, t_stack **b)
 	ascending_triangle_a_3(a, b);
 	pa(a, b);
 	ra(a);
-
 	return (1);
 }
 
 int	descending_triangle_a_4(t_stack **a, t_stack **b)
 {
-	int	i;
+	int		i;
 	t_stack	*min;
 
 	i = 1;
@@ -102,7 +99,6 @@ int	descending_triangle_a_4(t_stack **a, t_stack **b)
 	descending_triangle_a_3(a, b);
 	pa(a, b);
 	ra(a);
-
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:31:59 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:32:09 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:00:39 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	get_depth(t_stack *a, int n)
 		n = n / 3 + (n % 3 > 0);
 		depth++;
 	}
-
 	return (depth);
 }
 
@@ -42,59 +41,60 @@ int	get_ascending(int pow, int i)
 			i = i - pow * 2 / 3;
 		pow /= 3;
 	}
-
 	return (ret);
 }
 
-int	get_y(int x, int pow)
+t_info	get_root(int x, int pow, int range, t_info info)
 {
-	int	root;
-	int	range;
-	int	cnt;
-
-	root = (pow - 1) / 2;
-	range = pow / 3;
-	cnt = 0;
 	while (pow > 3)
 	{
 		if (x <= range)
 			range -= pow / 9 * 2;
 		else if (x <= range + pow / 3)
 		{
-			if (cnt % 2 == 0)
-				root += pow / 3;
-			else 
-				root -= pow / 3;
+			if (info.cnt % 2 == 0)
+				info.root += pow / 3;
+			else
+				info.root -= pow / 3;
 			range += pow / 3 / 3;
 		}
 		else
 		{
-			if (cnt % 2 == 0)
-				root -= pow / 3;
+			if (info.cnt % 2 == 0)
+				info.root -= pow / 3;
 			else
-				root += pow / 3;
+				info.root += pow / 3;
 			range += pow / 3 + pow / 3 / 3;
-			cnt++;
+			info.cnt++;
 		}
 		pow /= 3;
-		cnt++;
+		info.cnt++;
 	}
-	if (cnt % 2 == 0)
+	return (info);
+}
+
+int	get_y(int x, int pow)
+{
+	t_info	info;
+
+	info.cnt = 0;
+	info.root = (pow - 1) / 2;
+	info = get_root(x, pow, pow / 3, info);
+	if (info.cnt % 2 == 0)
 	{
 		if (x % 3 == 2)
-			root++;
+			info.root++;
 		else if (x % 3 == 0)
-			root--;
+			info.root--;
 	}
 	else
 	{
 		if (x % 3 == 2)
-			root--;
+			info.root--;
 		else if (x % 3 == 0)
-			root++;
+			info.root++;
 	}
-
-	return (root);
+	return (info.root);
 }
 
 int	get_size(int pow, int i, int n)
@@ -107,11 +107,10 @@ int	get_size(int pow, int i, int n)
 	ret = n / pow;
 	while (x)
 	{
-		y = get_y(x, pow);	
+		y = get_y(x, pow);
 		if (i == y)
 			return (ret + 1);
 		x--;
 	}
-	
 	return (ret);
 }

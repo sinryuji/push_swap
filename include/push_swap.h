@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:32:37 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 14:43:54 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef	struct	s_info
 	int	depth;
 	int	n;
 	int	pow;
+	int	root;
+	int	cnt;
 }	t_info;
 
 /* data_validation */
