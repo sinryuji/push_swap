@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 19:12:37 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:23:35 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ void	merge_sort(t_stack **a, t_stack **b)
 	info.n = get_list_length(*a);
 	if (info.n <= 5)
 		small_case(a, b, info.n);
-	info.depth = get_depth(*a, info.n);
-	info.pow = ft_pow(3, info.depth);
-	division(a, b, info);
-	merge(a, b, info);
+	else
+	{
+		info.depth = get_depth(*a, info.n);
+		info.pow = ft_pow(3, info.depth);
+		division(a, b, info);
+		merge(a, b, info);
+	}
 }
