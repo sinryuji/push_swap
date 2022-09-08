@@ -6,7 +6,7 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/21 18:10:52 by hyeongki          #+#    #+#              #
-#    Updated: 2022/09/05 21:05:15 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/09/08 10:57:13 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRCS_PATH = ./source/
 SRCS_NAME = push_swap.c data_validation.c stack.c push.c swap.c rotate.c reverse_rotate.c \
-			linked_list.c quick_sort.c stack_util.c selection_sort.c stack_util2.c quick_sort_apply.c \
-			escape_range3.c escape_range3_a.c escape_range3_b.c indexing.c hourglass_sort.c merge_sort.c \
+			linked_list.c stack_util.c stack_util2.c indexing.c hourglass_sort.c merge_sort.c \
 			triangle_a.c triangle_b.c
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJS = $(SRCS:.c=.o)
