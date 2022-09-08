@@ -6,11 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:41:25 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:12:37 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../lib/ft_printf/lib/libft/include/libft.h"
 
 void	division(t_stack **a, t_stack **b, t_info info)
 {
@@ -40,6 +41,8 @@ void	merge_sort(t_stack **a, t_stack **b)
 	t_info	info;
 
 	info.n = get_list_length(*a);
+	if (info.n <= 5)
+		small_case(a, b, info.n);
 	info.depth = get_depth(*a, info.n);
 	info.pow = ft_pow(3, info.depth);
 	division(a, b, info);

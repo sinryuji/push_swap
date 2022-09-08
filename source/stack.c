@@ -6,13 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:14:04 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:15:41 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../include/colors.h"
 #include "../lib/ft_printf/lib/libft/include/libft.h"
+#include "../lib/ft_printf/include/ft_printf.h"
 
 void	push(t_stack **top, int data)
 {
@@ -20,7 +20,7 @@ void	push(t_stack **top, int data)
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
-		ft_puterr(RED "Malloc error!\n");
+		ft_puterr("Malloc error!\n");
 	new->data = data;
 	if (*top)
 		new->next = *top;

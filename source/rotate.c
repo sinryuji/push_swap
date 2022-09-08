@@ -6,12 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:53:06 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/08/10 19:08:16 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:15:29 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../lib/ft_printf/lib/libft/include/libft.h"
+#include "../lib/ft_printf/include/ft_printf.h"
+#include <stdlib.h>
 
 static int	rotate_stack(t_stack **top)
 {

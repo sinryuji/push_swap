@@ -6,15 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 14:43:54 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:11:09 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# include "../lib/ft_printf/include/ft_printf.h"
-# include "../lib/ft_printf/lib//libft/include/libft.h"
 
 typedef struct s_stack
 {
