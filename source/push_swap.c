@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 19:46:32 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 20:40:27 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int	main(int argc, char **argv)
 	integer_validation(argc, argv);
 	init_stack(&a, argc, argv);
 	duplication_validation(a);
-	if (check_sort(a))
-		return (0);
-	merge_sort(&a, &b);
+	if (!check_sort(a))
+		merge_sort(&a, &b);
+	while (a)
+		pop(&a);
 	return (0);
 }
