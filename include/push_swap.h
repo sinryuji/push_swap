@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:03:44 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 11:32:37 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	init_stack(t_stack **top, int argc, char **argv);
 void	push(t_stack **top, int data);
 int		pop(t_stack **top);
 void	print_stack(t_stack *top);
-void	print_state(t_stack *a, t_stack *b);
 
 /* push.c */
 int	pa(t_stack **a, t_stack **b);
@@ -65,26 +64,31 @@ t_stack	*get_last_node(t_stack *top);
 int		get_list_length(t_stack *top);
 t_stack	*get_index_node(t_stack *top, int i);
 int	get_node_index(t_stack *current, t_stack *top);
-int	get_value_index(int data, t_stack *top);
-
-/* stack_util.c */
-int			check_acending_sort(t_stack *top);
-int			check_decending_sort(t_stack *top);
-t_stack		*get_min_node(t_stack *top);
-t_stack		*get_max_node(t_stack *top);
-
-/* stack_util2.c */
-t_stack *stack_copy(t_stack *top);
-void	stack_free(t_stack **top);
 
 /* merge_sort.c */
 void	merge_sort(t_stack **a, t_stack **b);
 int		get_size(int pow, int i, int n);
+int		get_ascending(int pow, int i);
 
 /* triangle_a.c */
 int		make_triangle_a(t_stack **a, t_stack **b, int size, int ascending);
 
 /* triangle_b.c */
 int		make_triangle_b(t_stack **a, t_stack **b, int size, int ascending);
+
+/* merge_01.c */
+void	merge(t_stack **a, t_stack **b, t_info info);
+
+/* merge_02.c */
+void	merge_ascending_a_to_b(t_stack **a, t_stack **b, t_info info, int i);
+void	merge_descending_a_to_b(t_stack **a, t_stack **b, t_info info, int i);
+void	merge_ascending_b_to_a(t_stack **a, t_stack **b, t_info info, int i);
+void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_info info, int i);
+
+/* get_info.c */
+int		get_depth(t_stack *a, int n);
+int		get_size(int pow, int i, int n);
+int		get_ascending(int pow, int i);
+
 
 #endif
