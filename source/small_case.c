@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:06:42 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 20:08:56 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/08 20:49:20 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	size_4(t_stack **a, t_stack **b)
 {
 	int		i;
-	t_stack *min;
+	t_stack	*min;
 
 	i = 0;
 	min = *a;
@@ -37,7 +37,7 @@ int	size_4(t_stack **a, t_stack **b)
 int	size_5(t_stack **a, t_stack **b)
 {
 	int		i;
-	t_stack *min;
+	t_stack	*min;
 
 	i = 0;
 	min = *a;
@@ -53,7 +53,8 @@ int	size_5(t_stack **a, t_stack **b)
 	else if (get_node_index(min, *a) == 2)
 		return (ra(a) && ra(a) && pb(a, b) && small_case(a, b, 4) && pa(a, b));
 	else if (get_node_index(min, *a) == 3)
-		return (rra(a) && rra(a) && pb(a, b) && small_case(a, b, 4) && pa(a, b));
+		return (rra(a) && rra(a) && pb(a, b) && \
+		small_case(a, b, 4) && pa(a, b));
 	else
 		return (rra(a) && pb(a, b) && small_case(a, b, 4) && pa(a, b));
 }
@@ -61,12 +62,14 @@ int	size_5(t_stack **a, t_stack **b)
 int	small_case(t_stack **a, t_stack **b, int n)
 {
 	if (n == 2 && (*a)->data > (*a)->next->data)
-			sa(a);
+		sa(a);
 	if (n == 3)
 	{
-		if ((*a)->data > (*a)->next->data && (*a)->data > (*a)->next->next->data)
+		if ((*a)->data > (*a)->next->data && \
+			(*a)->data > (*a)->next->next->data)
 			ra(a);
-		else if ((*a)->next->data > (*a)->data && (*a)->next->data > (*a)->next->next->data)
+		else if ((*a)->next->data > (*a)->data && \
+			(*a)->next->data > (*a)->next->next->data)
 			rra(a);
 		if ((*a)->data > (*a)->next->data)
 			sa(a);
