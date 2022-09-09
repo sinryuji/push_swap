@@ -6,16 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:56:53 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/09 15:05:09 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:11:04 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
 
 typedef struct s_stack
 {
@@ -23,9 +19,6 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
-
-/* get_next_line_bonus.c */
-char	*get_next_line(int fd);
 
 /* data_validation_bonus.c */
 void	integer_validation(int argc, char **argv);
