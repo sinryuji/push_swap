@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:59:51 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/09 16:33:35 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 16:45:53 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ int	main(int argc, char **argv)
 		ft_printf("KO\n");
 	while (a)
 		pop(&a);
+	return (0);
 }
