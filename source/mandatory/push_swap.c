@@ -6,12 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:01:23 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 20:40:27 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:50:10 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../lib/ft_printf/include/ft_printf.h"
+#include "../../include/push_swap.h"
+#include "../../lib/ft_printf/include/ft_printf.h"
 #include <stdlib.h>
 
 int	check_sort(t_stack *top)

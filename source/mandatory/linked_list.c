@@ -6,11 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:34:44 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:48:02 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:49:40 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 t_stack	*get_last_node(t_stack *top)
 {

@@ -6,11 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:27:33 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:28:07 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:49:45 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 void	merge_a_to_b(t_stack **a, t_stack **b, t_info info, int size)
 {

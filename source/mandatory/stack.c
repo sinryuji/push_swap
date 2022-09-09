@@ -6,13 +6,13 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 19:15:41 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:50:40 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../lib/ft_printf/lib/libft/include/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
+#include "../../include/push_swap.h"
+#include "../../lib/ft_printf/lib/libft/include/libft.h"
+#include "../../lib/ft_printf/include/ft_printf.h"
 
 void	push(t_stack **top, int data)
 {

@@ -6,11 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:48:11 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 11:47:43 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:50:52 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 int	ascending_triangle_a_3(t_stack **a, t_stack **b)
 {

@@ -6,12 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:29:05 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 20:40:01 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:49:58 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../lib/ft_printf/lib/libft/include/libft.h"
+#include "../../include/push_swap.h"
+#include "../../lib/ft_printf/lib/libft/include/libft.h"
 
 void	division(t_stack **a, t_stack **b, t_info info)
 {

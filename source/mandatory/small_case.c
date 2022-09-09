@@ -6,11 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:06:42 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 20:49:20 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:50:28 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 int	size_4(t_stack **a, t_stack **b)
 {

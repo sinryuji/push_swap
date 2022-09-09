@@ -6,11 +6,11 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:31:59 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 15:00:39 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:49:34 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 int	get_depth(t_stack *a, int n)
 {

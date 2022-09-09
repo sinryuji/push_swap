@@ -6,12 +6,12 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:50:28 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 19:11:51 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:47:50 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../lib/ft_printf/lib/libft/include/libft.h"
+#include "../../include/push_swap.h"
+#include "../../lib/ft_printf/lib/libft/include/libft.h"
 #include <limits.h>
 
 int	split_check(char **split)

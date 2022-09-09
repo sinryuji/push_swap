@@ -1,59 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 16:53:06 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 19:15:29 by hyeongki         ###   ########.fr       */
+/*   Created: 2022/07/26 16:42:02 by hyeongki          #+#    #+#             */
+/*   Updated: 2022/09/09 14:50:47 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../lib/ft_printf/include/ft_printf.h"
-#include <stdlib.h>
+#include "../../include/push_swap.h"
+#include "../../lib/ft_printf/include/ft_printf.h"
 
-static int	rotate_stack(t_stack **top)
+static int	swap_stack(t_stack **top)
 {
-	t_stack	*last;
+	int	data;
+	int	data2;
 
-	if (!*top)
+	if (!*top || !(*top)->next)
 		return (0);
-	last = get_last_node(*top);
-	last->next = *top;
-	(*top)->prev = last;
-	*top = (*top)->next;
-	(*top)->prev->next = NULL;
-	(*top)->prev = NULL;
+	data = pop(top);
+	data2 = pop(top);
+	push(top, data);
+	push(top, data2);
 	return (1);
 }
 
-int	ra(t_stack **a)
+int	sa(t_stack **a)
 {
-	if (rotate_stack(a))
+	if (swap_stack(a))
 	{
-		ft_printf("ra\n");
+		ft_printf("sa\n");
 		return (1);
 	}
 	return (0);
 }
 
-int	rb(t_stack **b)
+int	sb(t_stack **b)
 {
-	if (rotate_stack(b))
+	if (swap_stack(b))
 	{
-		ft_printf("rb\n");
+		ft_printf("sb\n");
 		return (1);
 	}
 	return (0);
 }
 
-int	rr(t_stack **a, t_stack **b)
+int	ss(t_stack **a, t_stack **b)
 {
-	if (rotate_stack(a) && rotate_stack(b))
+	if (swap_stack(a) && swap_stack(b))
 	{
-		ft_printf("rr\n");
+		ft_printf("ss\n");
 		return (1);
 	}
 	return (0);
