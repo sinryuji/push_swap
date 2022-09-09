@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/08 20:02:22 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:31:40 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 typedef struct s_stack
 {
 	int				data;
-	struct s_stack 	*prev;
+	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
 
-typedef	struct	s_info
+typedef struct s_info
 {
 	int	depth;
 	int	n;
@@ -28,6 +28,9 @@ typedef	struct	s_info
 	int	root;
 	int	cnt;
 }	t_info;
+
+/* push_swap.c */
+int		check_sort(t_stack *top);
 
 /* data_validation */
 void	integer_validation(int argc, char **argv);
@@ -40,29 +43,29 @@ int		pop(t_stack **top);
 void	print_stack(t_stack *top);
 
 /* push.c */
-int	pa(t_stack **a, t_stack **b);
-int	pb(t_stack **a, t_stack **b);
+int		pa(t_stack **a, t_stack **b);
+int		pb(t_stack **a, t_stack **b);
 
 /* swap.c */
-int	sa(t_stack **a);
-int	sb(t_stack **b);
-int	ss(t_stack **a, t_stack **b);
+int		sa(t_stack **a);
+int		sb(t_stack **b);
+int		ss(t_stack **a, t_stack **b);
 
 /* rotate.c */
-int	ra(t_stack **a);
-int	rb(t_stack **b);
-int	rr(t_stack **a, t_stack **b);
+int		ra(t_stack **a);
+int		rb(t_stack **b);
+int		rr(t_stack **a, t_stack **b);
 
 /* reverse_rotate.c */
-int	rra(t_stack **a);
-int	rrb(t_stack **b);
-int	rrr(t_stack **a, t_stack **b);
+int		rra(t_stack **a);
+int		rrb(t_stack **b);
+int		rrr(t_stack **a, t_stack **b);
 
 /* linked_list.c */
 t_stack	*get_last_node(t_stack *top);
 int		get_list_length(t_stack *top);
 t_stack	*get_index_node(t_stack *top, int i);
-int	get_node_index(t_stack *current, t_stack *top);
+int		get_node_index(t_stack *current, t_stack *top);
 
 /* merge_sort.c */
 void	merge_sort(t_stack **a, t_stack **b);
@@ -90,7 +93,6 @@ int		get_size(int pow, int i, int n);
 int		get_ascending(int pow, int i);
 
 /* small_case.c */
-int	small_case(t_stack **a, t_stack **b, int n);
-
+int		small_case(t_stack **a, t_stack **b, int n);
 
 #endif
