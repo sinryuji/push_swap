@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:59:51 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/09 16:02:06 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 16:33:35 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static void	operator(t_stack **a, t_stack **b, char *op)
 		rrb(b);
 	else if (ft_strncmp(op, "rrr\n", ft_strlen(op)) == 0)
 		rrr(a, b);
+	else
+		ft_puterr("Error\n");
 }
 
 static void	operator_apply(t_stack **a, t_stack **b)
@@ -86,7 +88,7 @@ int	main(int argc, char **argv)
 	init_stack(&a, argc, argv);
 	duplication_validation(a);
 	operator_apply(&a, &b);
-	if (check_sort(a))
+	if (check_sort(a) && !b)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
