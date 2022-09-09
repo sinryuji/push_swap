@@ -6,7 +6,7 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/21 18:10:52 by hyeongki          #+#    #+#              #
-#    Updated: 2022/09/09 20:11:46 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/09/09 21:03:04 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ FT_PRINTF_PATH = ./lib/ft_printf/
 FT_PRINTF = libftprintf.a
 
 %.o : %.c
-	$(CC) $(CFALGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
 

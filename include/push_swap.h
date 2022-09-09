@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:21:01 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/09 14:31:40 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:06:20 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	merge_ascending_b_to_a(t_stack **a, t_stack **b, t_info info, int i);
 void	merge_descending_b_to_a(t_stack **a, t_stack **b, t_info info, int i);
 
 /* get_info.c */
-int		get_depth(t_stack *a, int n);
+int		get_depth(int n);
 int		get_size(int pow, int i, int n);
 int		get_ascending(int pow, int i);
 
