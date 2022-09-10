@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:53:06 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/09 16:06:19 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:08:46 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	rotate_stack(t_stack **top)
 {
 	t_stack	*last;
 
-	if (!*top)
+	if (!*top || !(*top)->next)
 		return (0);
 	last = get_last_node(*top);
 	last->next = *top;
