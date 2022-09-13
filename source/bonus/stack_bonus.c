@@ -6,7 +6,7 @@
 /*   By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:09:16 by hyeongki          #+#    #+#             */
-/*   Updated: 2022/09/09 15:03:55 by hyeongki         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:22:04 by hyeongki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	pop(t_stack **top)
 	t_stack	*tmp;
 	int		data;
 
+	data = 0;
 	if (*top)
 	{
 		tmp = *top;
