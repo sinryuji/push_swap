@@ -6,7 +6,7 @@
 #    By: hyeongki <hyeongki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/21 18:10:52 by hyeongki          #+#    #+#              #
-#    Updated: 2022/09/09 21:03:04 by hyeongki         ###   ########.fr        #
+#    Updated: 2022/09/14 16:49:12 by hyeongki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,28 +28,38 @@ BONUS = checker
 FT_PRINTF_PATH = ./lib/ft_printf/
 FT_PRINTF = libftprintf.a
 
+# Colors
+GREEN = \x1b[32m
+RED = \x1b[31m
+RESET = \x1b[0m
+
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
 
 all : $(NAME)
 
 $(NAME) :  $(OBJS)
-	make -C $(FT_PRINTF_PATH)
-	$(CC) $(CFLAGS) $^ $(FT_PRINTF_PATH)$(FT_PRINTF) -o $@
+	@make -C $(FT_PRINTF_PATH)
+	@$(CC) $(CFLAGS) $^ $(FT_PRINTF_PATH)$(FT_PRINTF) -o $@
+	@echo "$@: $(GREEN)$@ was created$(RESET)"
 
 $(BONUS) :  $(BONUS_OBJS)
-	make -C $(FT_PRINTF_PATH)
-	$(CC) $(CFLAGS) $^ $(FT_PRINTF_PATH)$(FT_PRINTF) -o $@
+	@make -C $(FT_PRINTF_PATH)
+	@$(CC) $(CFLAGS) $^ $(FT_PRINTF_PATH)$(FT_PRINTF) -o $@
+	@echo "$@: $(GREEN)$@ was created$(RESET)"
 
 bonus : $(BONUS)
 
 clean :
-	$(RM) $(OBJS) $(BONUS_OBJS) 
-	make -C $(FT_PRINTF_PATH) clean
+	@$(RM) $(OBJS) $(BONUS_OBJS) 
+	@make -C $(FT_PRINTF_PATH) clean
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean : clean
-	$(RM) $(NAME)
-	make -C $(FT_PRINTF_PATH) fclean
+	@$(RM) $(NAME) $(BONUS)
+	@make -C $(FT_PRINTF_PATH) fclean
+	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re : fclean all
 
